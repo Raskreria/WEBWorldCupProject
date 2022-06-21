@@ -2,9 +2,7 @@ package service;
 
 import java.util.List;
 
-import dao.ElementInfoDao;
 import dao.GameInfoDao;
-import vo.ElementInfo;
 import vo.GameInfo;
 
 public class GameService {
