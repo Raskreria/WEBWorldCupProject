@@ -13,7 +13,7 @@ import util.Validator;
 import vo.BoardInfo;
 
 //test required
-@WebServlet("/BoardUpdateController")
+@WebServlet("/board/update")
 public class BoardUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1.파일을 제외하고 수정할 파라미터를 받는다.

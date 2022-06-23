@@ -99,7 +99,7 @@ public class BoardInfoDao {
 			pstmt.setInt(1, boardIdx);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
-
+			
 			int memberIdx = rs.getInt("memberIdx");
 			String title = rs.getString(category + "Title");
 			String contents = rs.getString(category + "Contents");
@@ -131,7 +131,7 @@ public class BoardInfoDao {
 
 		try {
 
-			String sql = "INSERT INTO" + category + "Info(memberIdx," + category + "Title ," + category
+			String sql = "INSERT INTO " + category + "Info(memberIdx," + category + "Title ," + category
 					+ "Contents, file, pubDate) VALUES(?, ?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
@@ -194,7 +194,7 @@ public class BoardInfoDao {
 		
 		try {
 			String sql = "DELETE FROM categoryInfo WHERE categoryidx = ?";
-			sql.replace("category", category);
+			sql = sql.replace("category", category);
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardIdx );
@@ -220,7 +220,7 @@ public class BoardInfoDao {
 		try {
 			String sql;
 			sql = "UPDATE categoryInfo SET file = ? WHERE categoryidx = ?";
-			sql.replace("category", category);
+			sql = sql.replace("category", category);
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, null);
@@ -243,7 +243,7 @@ public class BoardInfoDao {
 		try {
 			String sql;
 			sql = "UPDATE categoryInfo SET file = ? WHERE categoryidx = ?";
-			sql.replace("category", category);
+			sql = sql.replace("category", category);
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, filePath);

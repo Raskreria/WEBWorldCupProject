@@ -23,15 +23,12 @@ public class SearchLoginInfoController extends HttpServlet {
 		MemberInfoDao dao = new MemberInfoDao();
 		MemberInfo searchMemberInfo = dao.selectById(id);
 		
-		session.setAttribute("searchMemberInfo", searchMemberInfo);
+		request.setAttribute("searchMemberInfo", searchMemberInfo);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/worldcup/update_memberInfo.jsp");
 		rd.forward(request, response);
 		
-	
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 
 }

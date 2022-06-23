@@ -17,7 +17,7 @@ import vo.BoardInfo;
 public class BoardDeleteController extends HttpServlet {
 	//게시판 글 삭제
 	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. 파라미터 받기
 		String category = request.getParameter("category");
 		int boardIdx = Integer.parseInt(request.getParameter(category+"Idx"));

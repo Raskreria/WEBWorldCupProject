@@ -17,7 +17,7 @@ import dao.BoardInfoDao;
 import vo.BoardInfo;
 import vo.MemberInfo;
 
-@WebServlet("/board/form")
+@WebServlet("/board/write")
 public class BoardWriteController extends HttpServlet {
 	private static final int MAXIMUM_FILE_SIZE = 5 * 1024 * 1024;
 	
@@ -36,7 +36,7 @@ public class BoardWriteController extends HttpServlet {
 		String fileSystemName = multi.getFilesystemName("file");
 		String filePath = null;
 		if(fileSystemName != null) {
-			filePath = "/file/notice/" + fileSystemName;
+			filePath = "/file/board/" + fileSystemName;
 		}
 		
 		HttpSession session = request.getSession();

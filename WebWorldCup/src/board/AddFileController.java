@@ -13,7 +13,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.BoardInfoDao;
 //test required
-@WebServlet("/AddFileController")
+@WebServlet("/board/addfile")
 public class AddFileController extends HttpServlet {
 	//파일 크기 지정 상수
 	private static final int MAXIMUM_FILE_SIZE = 5 * 1024 * 1024;

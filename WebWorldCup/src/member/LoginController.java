@@ -16,8 +16,6 @@ import vo.MemberInfo;
 
 @WebServlet("/member/login")
 public class LoginController extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			//1. 사용자가 입력한 id,pw를 파라미터로 받아오기

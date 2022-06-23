@@ -14,8 +14,6 @@ import vo.MemberInfo;
 
 @WebServlet("/member/delete")
 public class DeleteController extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//세션에 저장된 로그인 정보에서 id를 꺼낸다
