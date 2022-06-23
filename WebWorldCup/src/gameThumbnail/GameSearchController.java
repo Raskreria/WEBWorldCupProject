@@ -15,7 +15,7 @@ import dao.GameInfoDao;
 import vo.GameInfo;
 
 //test required
-@WebServlet("/GameSearchController")
+@WebServlet("/main/gamesearch")
 public class GameSearchController extends HttpServlet {
 	//메인 페이지 게임 검색
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

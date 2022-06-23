@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.CommentInfoDao;
 import vo.CommentInfo;
 
-@WebServlet("/CommentListController")
+@WebServlet("/comment/list")
 public class CommentListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("gameIdx") == null) {

@@ -13,11 +13,12 @@ import dao.RecordInfoDao;
 import vo.RecordInfo;
 
 //test required
-@WebServlet("/RecordController")
+@WebServlet("/record")
 public class RecordController extends HttpServlet {
 	// 게임 결과 페이지 (게임 기록/플레이) 데이터 저장.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		//1. 파라미터 받기
+		request.setCharacterEncoding("UTF-8");
 		int gameIdx = Integer.parseInt(request.getParameter("gameIdx"));
 		int memberIdx = Integer.parseInt(request.getParameter("memberIdx"));
 		String gameRecord = null;

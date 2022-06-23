@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.RecordInfoDao;
 import vo.RecordInfo;
 // test required
-@WebServlet("/RecordListController")
+@WebServlet("/record/list")
 public class RecordListController extends HttpServlet {
 	// 지난 게임 기록 가져오기
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -18,7 +18,8 @@ public class ElementInfoDao {
 		PreparedStatement pstmt = null;
 		List<ElementInfo> elementInfoList = new ArrayList<>();
 
-		String sql = "SELECT * FROM gamedatainfo WHERE gameidx=" + gameIdx;
+		String sql = "SELECT * from ElementInfo WHERE gameIdx =" + gameIdx + " order by rand() LIMIT 16";
+				
 		try {
 
 			pstmt = conn.prepareStatement(sql);
@@ -54,16 +55,16 @@ public class ElementInfoDao {
 		try {
 			String sql;
 
-			sql = "UPDATE gamedataInfo SET elementWinCount = elementWinCount+1 WHERE elementIdx = ? AND gameIdx = ?";
+			sql = "UPDATE ElementInfo SET elementWinCount = elementWinCount+1 WHERE elementIdx = ? AND gameIdx = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, resultArray[15]);
+			pstmt.setInt(1, resultArray[7]);
 			pstmt.setInt(2, gameIdx);
 			
 			pstmt.executeUpdate();
 
 			
 			for (int i = 0 ; i < 8; i++ ) {
-				sql = "UPDATE gamedataInfo SET elementSelectCount = elementSectCount + ? WHERE elementIdx = ? AND gameIdx = ?";
+				sql = "UPDATE ElementInfo SET elementSelectCount = elementSelectCount + ? WHERE elementIdx = ? AND gameIdx = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, reflectArray[i]);
 				pstmt.setInt(2, resultArray[i]);

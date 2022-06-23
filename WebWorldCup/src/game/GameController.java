@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ElementInfoDao;
 import vo.ElementInfo;
 // test required
-@WebServlet("/GameController")
+@WebServlet("/game/playdata")
 public class GameController extends HttpServlet {
 	// 게임 진행을 위한 데이터 가져오기
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

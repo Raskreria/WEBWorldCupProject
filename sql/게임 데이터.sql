@@ -1,0 +1,1 @@
+SELECT * from elementInfo WHERE gameIdx = 1 order by rand() LIMIT 16

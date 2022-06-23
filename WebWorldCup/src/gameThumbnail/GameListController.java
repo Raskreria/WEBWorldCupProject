@@ -15,7 +15,7 @@ import service.GameService;
 import vo.GameInfo;
 
 //test required
-@WebServlet("/GameListController")
+@WebServlet("/main")
 public class GameListController extends HttpServlet {
 	// 썸네일 목록 불러오기
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

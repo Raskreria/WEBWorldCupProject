@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.CommentInfoDao;
 import vo.CommentInfo;
 
-@WebServlet("/CommentWriteController")
+@WebServlet("/comment/write")
 public class CommentWriteController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		if(request.getParameter("gameIdx") == null) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return;

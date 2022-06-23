@@ -21,11 +21,16 @@ public class GameInfoDao {
 		
 		String sql;
 		//sortingMethod에 따른 sql 구성
-		if(sortingMethod.equals("prefer")) {
-			sql="SELECT * FROM GameThumbnailInfo ORDER BY ## ASSEND LIMIT ?, 10";
-			
+		if(sortingMethod.equals("popularity")) {
+			sql="SELECT COUNT(*)AS amount, a.gameIdx, a.gameTitle, a.gameImg "
+					+ "FROM GameInfo AS a JOIN RecordInfo AS b "
+					+ "WHERE a.gameIdx = b.gameIdx "
+					+ "group BY a.gameIdx "
+					+ "ORDER BY amount desc LIMIT ?, 8";
 		}else {
-			sql="";
+			sql="SELECT * "
+					+ "FROM gamesthumbnailinfo "
+					+ "ORDER BY regDate asc LIMIT ?, 8 ";
 		}
 		
 		try {
@@ -63,7 +68,7 @@ public class GameInfoDao {
 		PreparedStatement pstmt = null;
 		List<GameInfo> gameInfoList= new ArrayList<>();
 		
-		String sql = "SELECT * FROM GameThumbnailInfo WHERE gameTitle = \"_"+searchData +"_\" ";
+		String sql = "SELECT * FROM GameInfo WHERE gameTitle LIKE \"%"+searchData+"%\" ";
 		try {
 			
 			pstmt = conn.prepareStatement(sql);

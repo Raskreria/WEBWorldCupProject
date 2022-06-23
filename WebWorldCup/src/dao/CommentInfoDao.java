@@ -21,12 +21,13 @@ public class CommentInfoDao {
 		PreparedStatement pstmt = null;
 		List<CommentInfo> commentInfoList = new ArrayList<>();
 		
-		String sql = "SELECT * FROM gamecomment WHERE gameidx=" + gameIdx +"ORDER BY commentDate DESC LIMIT ?, 10";
+		String sql = "SELECT * 	FROM commentinfo WHERE gameidx=? ORDER BY commentDate ASC LIMIT ?, 10";
 		
 		try {
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, (loadNumber - 1) * 10);
+			pstmt.setInt(1, gameIdx);
+			pstmt.setInt(2, (loadNumber - 1) * 10);
 			
 			ResultSet rs = pstmt.executeQuery();
 
@@ -61,16 +62,16 @@ public class CommentInfoDao {
 
 		try {
 
-			String sql = "INSERT INTO gamecomment(gameIdx,name,comment,commentDate,memberIdx) VALUES(?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO commentInfo(gameIdx,name,comment,commentDate,memberIdx) VALUES(?, ?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, commentInfo.getGameIdx());
 			pstmt.setString(2, commentInfo.getName());
 			pstmt.setString(3, commentInfo.getComment());
 			pstmt.setString(4, commentInfo.getCommentDate().toString());
-			if(commentInfo.getMemberIdx() == 0) {
+			if (commentInfo.getMemberIdx() == 0) {
 				pstmt.setString(5, null);
-			}else {
+			} else {
 				pstmt.setInt(5, commentInfo.getMemberIdx());
 			}
 			int count = pstmt.executeUpdate();

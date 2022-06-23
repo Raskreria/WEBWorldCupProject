@@ -1,0 +1,1 @@
+SELECT * FROM GamesThumbnailInfo WHERE gameTitle LIKE "%게임%" 

@@ -21,7 +21,7 @@ public class RecordInfoDao {
 
 		try {
 
-			String sql = "INSERT INTO gameplaydata(gameIdx,playMemberIdx,gameRecord,playDate) VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO recordInfo(gameIdx,playMemberIdx,gameRecord,playDate) VALUES(?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, recordInfo.getGameIdx());
@@ -53,12 +53,12 @@ public class RecordInfoDao {
 		PreparedStatement pstmt = null;
 		List<RecordInfo> recordInfoList = new ArrayList<>();
 		
-		String sql = "SELECT * FROM gameplaydata WHERE memberidx=" + memberIdx
-				+"ORDER BY playDate DESC LIMIT ?, 10";
+		String sql = "SELECT * FROM recordInfo WHERE playMemberIdx = ? ORDER BY playDate ASC LIMIT ?, 10";
 		try {
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, (loadNumber - 1) * 10);
+			pstmt.setInt(1, memberIdx);
+			pstmt.setInt(2, (loadNumber - 1) * 10);
 			
 			ResultSet rs = pstmt.executeQuery();
 

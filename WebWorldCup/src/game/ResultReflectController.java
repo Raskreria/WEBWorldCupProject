@@ -11,15 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ElementInfoDao;
 
 //test required
-@WebServlet("/ResultReflectController")
+@WebServlet("/game/resultreflect")
 public class ResultReflectController extends HttpServlet {
 	//게임 결과 반영
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. 파라미터 받기
 		int gameIdx = Integer.parseInt(request.getParameter("gameIdx"));
-		int[] resultArray = new int[8];
-		for (int count = 0; count < 8; count++) {
-			resultArray[count] = Integer.parseInt(request.getParameter("elementIdx"));
+		String[] resultArrayString = request.getParameterValues("elementIdx");
+		int[] resultArray = new int[resultArrayString.length];
+		
+		int count=0;
+		for (String elementIdx:resultArrayString) {
+			resultArray[count++] = Integer.parseInt(elementIdx);
 		}
 		
 		//2. db에 결과 반영
@@ -34,3 +37,4 @@ public class ResultReflectController extends HttpServlet {
 		}
 	}
 }
+	
