@@ -1,45 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<nav>
-	<div class="px-3 py-2 bg-dark text-white">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-          </a>
+	<header class="p-1	 bg-success text-white">
+		<div class="container">
+			<div
+				class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<!-- 로고 style="color:white" -->
+				<a href="#" style="color:white">
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+					  	<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+						  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+					</svg>
+				</a>
+				<ul
+					class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+					<li><a href="#" class="nav-link px-2 text-white">페이지 소개</a></li>
+					<li><a href="#" class="nav-link px-2 text-white">게시판</a></li>
+					<li><a href="#" class="nav-link px-2 text-white">게임 만들기</a></li>
+				</ul>
 
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="#" class="nav-link text-secondary">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
-                Orders
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"></use></svg>
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
-                Customers
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-</nav>
+				<!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+					<input type="search" class="form-control form-control-dark"
+						placeholder="Search..." aria-label="Search">
+				</form> -->
+
+				<div class="text-end">
+					<button type="button" class="btn btn-outline-light me-3"> <b>로그인</b> </button>
+					<button type="button" class="btn btn-outline-light me-3"> <b>회원가입</b> </button>
+				</div>
+			</div>
+		</div>
+	</header>
