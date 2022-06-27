@@ -13,9 +13,15 @@
 				</a>
 				<ul
 					class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-					<li><a href="#" class="nav-link px-2 text-white">페이지 소개</a></li>
-					<li><a href="#" class="nav-link px-2 text-white">게시판</a></li>
-					<li><a href="#" class="nav-link px-2 text-white">게임 만들기</a></li>
+					<li>
+					<button type="button" class="btn btn-outline-light" style="border:0px"> <b>페이지 소개</b> </button>
+					</li>
+					<li>
+					<button type="button" class="btn btn-outline-light" style="border:0px"> <b>게시판</b> </button>
+					</li>
+					<li>
+					<button type="button" class="btn btn-outline-light" style="border:0px"> <b>게임 만들기</b> </button>
+					</li>
 				</ul>
 
 				<!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
