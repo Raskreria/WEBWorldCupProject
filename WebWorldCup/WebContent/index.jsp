@@ -20,9 +20,13 @@
 
 <!-- nav css -->
 <link rel="stylesheet" href="/worldcup/css/nav.css">
-
+<!-- URLs.js -->
+<script src="../js/URLs.js"></script>
 </head>
 <body>
+	<!-- URLs.jsp -->
+	<%@ include file="/includes/URLs.jsp"%>
+
 	<!-- 헤더 -->
 	<%@ include file="/includes/header.jsp"%>
 
@@ -41,7 +45,7 @@
 								class="Ntxt_popular">인기순</span></a></li>
 						<li class=""><a href="javascript:void(0);"
 							onclick="nclk_v2(event,'twt.byupdate')"><span
-								class="Ntxt_update">업데이트순</span></a></li>
+								class="Ntxt_update">최신순</span></a></li>
 						<li class="sel"><a href="javascript:void(0);"
 							onclick="nclk_v2(event,'twt.byscore')"><span
 								class="Ntxt_star_rate">별점순</span></a></li>

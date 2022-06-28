@@ -30,8 +30,18 @@
 				</form> -->
 
 				<div class="text-end">
-					<button type="button" class="btn btn-outline-light me-3"> <b>로그인</b> </button>
-					<button type="button" class="btn btn-outline-light me-3"> <b>회원가입</b> </button>
+					<a href="${LOGIN_PAGE}">
+						<button type="button" class="btn btn-outline-light me-3"> 
+							<b>로그인</b> 
+						</button>
+					</a>
+					<a href="${JOIN_PAGE}">
+						
+						<button type="button" class="btn btn-outline-light me-3">
+							<b>회원가입</b> 
+						</button>
+					
+					</a>
 				</div>
 			</div>
 		</div>
