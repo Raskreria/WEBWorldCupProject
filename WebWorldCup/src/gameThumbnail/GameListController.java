@@ -40,7 +40,7 @@ public class GameListController extends HttpServlet {
 		
 		//3. JSP에서 사용하기 위해 객체로 저장.
 		request.setAttribute("gameInfoList", gameInfoList);
-		RequestDispatcher rd = request.getRequestDispatcher("/worldcup/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/");
 		rd.forward(request, response);
 			
 	

@@ -32,6 +32,11 @@
 
 	<!-- NAV -->
 	<nav class="bg-light">
+	
+	
+		<div>안녕하세요</div>
+		
+		
 		<div class="container border border-dark border-3 mt-3 p-2 bg-white">
 			<div class="row">
 				<div class="data_area col-1 pl-2">
@@ -312,22 +317,24 @@
 		$(window).scroll(
 				function() { //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
 					if ($(window).scrollTop() >= $(document).height()-$(window).height() ) {
-						$("#thumbnailList").prepend("<div class=\"col-xs-6 col-sm-3 col-lg-2.4\">\n"
-				          		+ "						<div class=\"card shadow-sm\">\n"
-				          		+ "							<img src=\"https://via.placeholder.com/300x180.jpg\"\n"
-				          		+ "								class=\"d-block w-100\" alt=\"...\">\n"
-				          		+ "							<div class=\"card-body\">\n"
-				          		+ "								<p class=\"card-text\">각종 버튼 위치</p>\n"
-				          		+ "								<div class=\"d-flex justify-content-between align-items-center\">\n"
-				          		+ "									<div class=\"btn-group\">\n"
-				          		+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button>\n"
-				          		+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>\n"
-				          		+ "									</div>\n"
-				          		+ "									<small class=\"text-muted\">9 mins</small>\n"
-				          		+ "								</div>\n"
-				          		+ "							</div>\n"
-				          		+ "						</div>\n"
-				          		+ "					</div>"");
+						for(let i =0 ; i<10 ; i++){
+							$("#thumbnailList").append("<div class=\"col-xs-6 col-sm-3 col-lg-2.4\">\n"
+									+ "						<div class=\"card shadow-sm\">\n"
+									+ "							<img src=\"https://via.placeholder.com/300x180.jpg\"\n"
+									+ "								class=\"d-block w-100\" alt=\"...\">\n"
+									+ "							<div class=\"card-body\">\n"
+									+ "								<p class=\"card-text\">각종 버튼 위치</p>\n"
+									+ "								<div class=\"d-flex justify-content-between align-items-center\">\n"
+									+ "									<div class=\"btn-group\">\n"
+									+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button>\n"
+									+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>\n"
+									+ "									</div>\n"
+									+ "									<small class=\"text-muted\">9 mins</small>\n"
+									+ "								</div>\n"
+									+ "							</div>\n"
+									+ "						</div>\n"
+									+ "					</div>");
+						}
 					}
 				});
 	</script>
