@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입 페이지</title>
 <!-- 부트스트랩 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -60,17 +60,22 @@
 			</div>
 			
 			<div class="form-floating">
-				<input type="text" class="form-control" id="floatingAddr"
-					placeholder="Addr" name="addr" disabled> <label id="address" for="floatingName">주소</label>
+				<input type="text" class="form-control" id="floatingAddr" placeholder="Addr" name="addr" disabled="">
+				<label for="floatingAddr">주소</label>
 					
-				
-					<button id="addressbtn" type="button">주소 검색</button>
-					<h1 id="zonecode"></h1>
+				<button class="btn btn-outline-success p-3 m-0" id="address-btn" type="button">
+					<svg style="display: inline-block" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+							<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					</svg>
+				</button>
 			</div>
+			
 			<div class="form-floating">
-				<input type="email" class="form-control" id="floatingEmail"
-					placeholder="Email" name="email"> <label for="floatingName">이메일</label>
+				<input type="text" class="form-control" id="floatingZoneCode" placeholder="Addr" name="zoneCode" disabled>
+				<label for="zoneCode">우편번호</label>
 			</div>
+		
+			
 
 
 			<div class="form-floating">
@@ -111,7 +116,7 @@
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script type="text/javascript">
 // 		다음 주소 서비스 버튼 클릭 ajax
-			$("#addressbtn").on("click",function(){
+			$("#address-btn").on("click",function(){
 		        
 		        new daum.Postcode({
 		        oncomplete: function(data) {
@@ -125,8 +130,8 @@
 		            }
 	
 		            
-		            $("#address").text(addr);
-		            $("#zonecode").text(data.zonecode);
+		            $("#floatingAddr").val(addr);
+		            $("#floatingZoneCode").val(data.zonecode);
 		            //우편번호
 			       }
 		        }).open();

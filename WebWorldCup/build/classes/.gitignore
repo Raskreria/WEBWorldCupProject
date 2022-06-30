@@ -1,6 +1,11 @@
 /board/
-/gameThumbnail/
 /dao/
+/exception/
 /game/
-/record/
 /gameComment/
+/gameThumbnail/
+/member/
+/record/
+/service/
+/util/
+/vo/

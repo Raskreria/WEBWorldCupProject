@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<!-- URLs.jsp -->
+<%@ include file="/includes/URLs.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,19 +26,12 @@
 <script src="../js/URLs.js"></script>
 </head>
 <body>
-	<!-- URLs.jsp -->
-	<%@ include file="/includes/URLs.jsp"%>
 
 	<!-- 헤더 -->
 	<%@ include file="/includes/header.jsp"%>
 
 	<!-- NAV -->
 	<nav class="bg-light">
-	
-	
-		<div>안녕하세요</div>
-		
-		
 		<div class="container border border-dark border-3 mt-3 p-2 bg-white">
 			<div class="row">
 				<div class="data_area col-1 pl-2">
@@ -117,7 +112,7 @@
 
 		<div class="album py-1 bg-light">
 			<div class="container p-0">
-				<!-- 					카테고리 게임검색 -->
+				<!-- 					 게임검색 / 정렬방식 -->
 				<div class="row my-2">
 					<!-- 					게임 검색 -->
 					<form class="col-5 d-flex py-2">
@@ -127,13 +122,12 @@
 							<svg style="display: inline-block"
 								xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 								fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  								<path
-									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+  								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 							</svg>
 						</button>
 					</form>
 
-					<!-- 				SELECT 정렬 -->
+					<!-- 				정렬 방식 -->
 					<select class="form-select form-select-sm w-25 p-2 my-2"
 						aria-label=".form-select-sm example">
 						<option value="1" selected>인기순</option>
@@ -316,23 +310,24 @@
 	<script type="text/javascript">
 		$(window).scroll(
 				function() { //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-					if ($(window).scrollTop() >= $(document).height()-$(window).height() ) {
-						for(let i =0 ; i<10 ; i++){
-							$("#thumbnailList").append("<div class=\"col-xs-6 col-sm-3 col-lg-2.4\">\n"
-									+ "						<div class=\"card shadow-sm\">\n"
-									+ "							<img src=\"https://via.placeholder.com/300x180.jpg\"\n"
-									+ "								class=\"d-block w-100\" alt=\"...\">\n"
-									+ "							<div class=\"card-body\">\n"
-									+ "								<p class=\"card-text\">각종 버튼 위치</p>\n"
-									+ "								<div class=\"d-flex justify-content-between align-items-center\">\n"
-									+ "									<div class=\"btn-group\">\n"
-									+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button>\n"
-									+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>\n"
-									+ "									</div>\n"
-									+ "									<small class=\"text-muted\">9 mins</small>\n"
-									+ "								</div>\n"
-									+ "							</div>\n"
-									+ "						</div>\n"
+					if ($(window).scrollTop()+150 >= $(document).height() - $(window).height() ) {
+						for(var i =0 ; i<10 ; i++){
+							
+							$("#thumbnailList").append("<div class=\"col-xs-6 col-sm-3 col-lg-2.4\">"
+									+ "						<div class=\"card shadow-sm\">"
+									+ "							<img src=\"https://via.placeholder.com/300x180.jpg\""
+									+ "								class=\"d-block w-100\" alt=\"...\">"
+									+ "							<div class=\"card-body\">"
+									+ "								<p class=\"card-text\">각종 버튼 위치</p>"
+									+ "								<div class=\"d-flex justify-content-between align-items-center\">"
+									+ "									<div class=\"btn-group\">"
+									+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button>"
+									+ "										<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>"
+									+ "									</div>"
+									+ "									<small class=\"text-muted\">9 mins</small>"
+									+ "								</div>"
+									+ "							</div>"
+									+ "						</div>"
 									+ "					</div>");
 						}
 					}

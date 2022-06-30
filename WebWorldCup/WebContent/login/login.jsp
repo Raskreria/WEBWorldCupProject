@@ -67,7 +67,7 @@
 
 
 		</form>
-		
+		<hr/>
 		<button id="loginbtn" class="w-100 btn btn-lg btn-warning my-1"type="button">카카오로 이용하기</button>
 		<button id="joinbtn" class="w-100 btn btn-lg btn-primary mb-1"type="button">페이스북으로 이용하기</button>
 		<button id="joinbtn" class="w-100 btn btn-lg btn-success"type="button">네이버로 이용하기</button>

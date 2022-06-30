@@ -5,3 +5,4 @@
 <c:set var="MAIN_PAGE" value="/worldcup/"/>
 <c:set var="LOGIN_PAGE" value="/worldcup/login/login.jsp"/>
 <c:set var="JOIN_PAGE" value="/worldcup/join/join.jsp"/>
+<c:set var="BOARD_PAGE" value="/worldcup/board/board.jsp"/>
