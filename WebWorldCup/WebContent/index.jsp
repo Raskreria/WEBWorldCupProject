@@ -138,166 +138,25 @@
 				<!-- 					썸네일 목록-->
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" id="thumbnailList">
 					<!-- 					썸네일 -->
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+					<c:forEach items="${gameInfoList}" var="nthGameInfo">
+						<div class="col-xs-6 col-sm-3 col-lg-2.4">
+							<div class="card shadow-sm">
+								<img src="https://via.placeholder.com/300x180.jpg"
+									class="d-block w-100" alt="...">
+								<div class="card-body">
+									<p class="card-text">${nthGameInfo.gameTitle}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+											<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+										</div>
+										<small class="text-muted">9 mins</small>
 									</div>
-									<small class="text-muted">9 mins</small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2.4">
-						<div class="card shadow-sm">
-							<img src="https://via.placeholder.com/300x180.jpg"
-								class="d-block w-100" alt="...">
-							<div class="card-body">
-								<p class="card-text">각종 버튼 위치</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
+					
 
 
 				</div>

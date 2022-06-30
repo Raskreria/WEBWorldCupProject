@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `elementinfo` (
   CONSTRAINT `FK_gameinfo_gamesinfo` FOREIGN KEY (`gameIdx`) REFERENCES `gameinfo` (`gameIdx`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3 COMMENT='특정 게임 데이터 테이블';
 
--- 테이블 데이터 worldcupgame.elementinfo:~14 rows (대략적) 내보내기
+-- 테이블 데이터 worldcupgame.elementinfo:~16 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `elementinfo` DISABLE KEYS */;
 REPLACE INTO `elementinfo` (`gameIdx`, `elementIdx`, `elementSelectCount`, `elementWinCount`, `elementTitle`, `elementImg`) VALUES
 	(1, 1, 0, 0, '게임요소이름1', '게임요소이미지2'),
@@ -100,14 +100,24 @@ CREATE TABLE IF NOT EXISTS `gameinfo` (
   PRIMARY KEY (`gameIdx`) USING BTREE,
   KEY `FK_gamesinfo_memberinfo` (`regMemberIdx`),
   CONSTRAINT `FK_gamesinfo_memberinfo` FOREIGN KEY (`regMemberIdx`) REFERENCES `memberinfo` (`memberIdx`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COMMENT='게임 썸네일 정보 테이블';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3 COMMENT='게임 썸네일 정보 테이블';
 
--- 테이블 데이터 worldcupgame.gameinfo:~2 rows (대략적) 내보내기
+-- 테이블 데이터 worldcupgame.gameinfo:~13 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `gameinfo` DISABLE KEYS */;
 REPLACE INTO `gameinfo` (`gameIdx`, `regMemberIdx`, `gameTitle`, `gameImg`, `regDate`) VALUES
 	(1, 1, '게임1', '게임이미지1', '2022-06-24 01:25:43'),
 	(2, 2, '게임2', '게임이미지2', '2022-06-24 01:33:37'),
-	(3, 3, '게임3', '게임이미지3', '2022-06-24 01:33:56');
+	(3, 3, '게임3', '게임이미지3', '2022-06-24 01:33:56'),
+	(4, 2, '게임4', '게임이미지4', '2022-06-30 14:56:23'),
+	(5, 2, '게임5', '게임이미지5', '2022-06-30 14:56:54'),
+	(6, 1, '게임6', '게임이미지6', '0000-00-00 00:00:00'),
+	(7, 2, '게임7', '게임이미지7', '0000-00-00 00:00:00'),
+	(8, 1, '게임8', '게임이미지8', '0000-00-00 00:00:00'),
+	(9, 1, '게임9', '게임이미지9', '2022-06-30 14:58:14'),
+	(10, 1, '게임10', '게임이미지10', '2022-06-30 14:58:26'),
+	(11, 1, '게임11', '게임이미지11', '0000-00-00 00:00:00'),
+	(12, 3, '게임12', '게임이미지12', '0000-00-00 00:00:00'),
+	(13, 3, '게임13', '게임이미지13', '2022-06-30 14:59:09');
 /*!40000 ALTER TABLE `gameinfo` ENABLE KEYS */;
 
 -- 테이블 worldcupgame.memberinfo 구조 내보내기
@@ -144,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `noticeinfo` (
   CONSTRAINT `FK_noticeinfo_memberinfo` FOREIGN KEY (`memberIdx`) REFERENCES `memberinfo` (`memberIdx`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='공지사항 정보 테이블';
 
--- 테이블 데이터 worldcupgame.noticeinfo:~0 rows (대략적) 내보내기
+-- 테이블 데이터 worldcupgame.noticeinfo:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `noticeinfo` DISABLE KEYS */;
 REPLACE INTO `noticeinfo` (`noticeIdx`, `memberIdx`, `noticeTitle`, `noticeContents`, `file`, `pubDate`) VALUES
 	(1, 1, '첫번째 공지사항', '공지사항1', NULL, '2022-06-12 23:53:18'),

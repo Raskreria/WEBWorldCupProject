@@ -22,15 +22,14 @@ public class GameInfoDao {
 		String sql;
 		//sortingMethod에 따른 sql 구성
 		if(sortingMethod.equals("popularity")) {
-			sql="SELECT COUNT(*)AS amount, a.gameIdx, a.gameTitle, a.gameImg "
-					+ "FROM GameInfo AS a JOIN RecordInfo AS b "
-					+ "WHERE a.gameIdx = b.gameIdx "
-					+ "group BY a.gameIdx "
-					+ "ORDER BY amount desc LIMIT ?, 8";
+			sql="SELECT COUNT(0)AS amount, a.gameIdx, a.gameTitle, a.gameImg "
+			+ "FROM gameInfo AS a LEFT OUTER JOIN recordInfo AS b ON a.gameIdx = b.gameIdx "
+			+ "group BY a.gameIdx "
+			+ "ORDER BY amount desc LIMIT ?, 10";
 		}else {
 			sql="SELECT * "
 					+ "FROM gamesthumbnailinfo "
-					+ "ORDER BY regDate asc LIMIT ?, 8 ";
+					+ "ORDER BY regDate asc LIMIT ?, 10";
 		}
 		
 		try {
