@@ -95,18 +95,18 @@ CREATE TABLE IF NOT EXISTS `gameinfo` (
   `gameIdx` int(11) NOT NULL AUTO_INCREMENT COMMENT '게임번호',
   `regMemberIdx` int(11) NOT NULL COMMENT '게임등록 사용자 회원정보 ',
   `gameTitle` varchar(20) NOT NULL COMMENT '게임이름',
-  `gameImg` varchar(30) NOT NULL COMMENT '게임이미지 경로',
+  `gameImg` varchar(50) NOT NULL COMMENT '게임이미지 경로',
   `regDate` datetime NOT NULL COMMENT '등록날짜',
   PRIMARY KEY (`gameIdx`) USING BTREE,
   KEY `FK_gamesinfo_memberinfo` (`regMemberIdx`),
   CONSTRAINT `FK_gamesinfo_memberinfo` FOREIGN KEY (`regMemberIdx`) REFERENCES `memberinfo` (`memberIdx`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3 COMMENT='게임 썸네일 정보 테이블';
 
--- 테이블 데이터 worldcupgame.gameinfo:~13 rows (대략적) 내보내기
+-- 테이블 데이터 worldcupgame.gameinfo:~12 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `gameinfo` DISABLE KEYS */;
 REPLACE INTO `gameinfo` (`gameIdx`, `regMemberIdx`, `gameTitle`, `gameImg`, `regDate`) VALUES
-	(1, 1, '게임1', '게임이미지1', '2022-06-24 01:25:43'),
-	(2, 2, '게임2', '게임이미지2', '2022-06-24 01:33:37'),
+	(1, 1, '게임1', '/file/game/thumbnail/강아지월드컵.jpg', '2022-06-24 01:25:43'),
+	(2, 2, '게임2', '/file/game/thumbnail/카페월드컵.jpg', '2022-06-24 01:33:37'),
 	(3, 3, '게임3', '게임이미지3', '2022-06-24 01:33:56'),
 	(4, 2, '게임4', '게임이미지4', '2022-06-30 14:56:23'),
 	(5, 2, '게임5', '게임이미지5', '2022-06-30 14:56:54'),

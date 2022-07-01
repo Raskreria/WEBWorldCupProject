@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class GameInfo {
 	private int gameIdx;
-	private int regMemeberIdx;
+	private int regMemberIdx;
 	private String gameTitle;
 	private String gameImg;
 	private LocalDateTime regDate;
@@ -15,7 +15,15 @@ public class GameInfo {
 		this.gameTitle = gameTitle;
 		this.gameImg = gameImg;
 	}
+
 	
+	public GameInfo(int gameIdx, int regMemberIdx, String gameTitle, String gameImg) {
+		this.regMemberIdx = regMemberIdx;
+		this.gameTitle = gameTitle;
+		this.gameImg = gameImg;
+	}
+
+
 	public int getGameIdx() {
 		return gameIdx;
 	}
@@ -23,10 +31,10 @@ public class GameInfo {
 		this.gameIdx = gameIdx;
 	}
 	public int getRegMemeberIdx() {
-		return regMemeberIdx;
+		return regMemberIdx;
 	}
 	public void setRegMemeberIdx(int regMemeberIdx) {
-		this.regMemeberIdx = regMemeberIdx;
+		this.regMemberIdx = regMemeberIdx;
 	}
 	public String getGameTitle() {
 		return gameTitle;

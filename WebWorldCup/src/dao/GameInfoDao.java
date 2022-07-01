@@ -8,11 +8,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import util.Database;
+import vo.BoardInfo;
 import vo.GameInfo;
 
 public class GameInfoDao {
 
-	
+	public boolean insertGameInfo(GameInfo gameInfo) {
+
+		Database db = new Database();
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		try {
+
+			String sql = "INSERT INTO gmaeInfo(regMemberIdx,gmaeTitle,gmaeImg) VALUES(?, ?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gameInfo.getRegMemeberIdx());
+			pstmt.setString(2, gameInfo.getGameTitle());
+			pstmt.setString(3, gameInfo.getGameImg());
+
+			int count = pstmt.executeUpdate();
+
+			return count == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return false;
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+	}
 	public List<GameInfo> selectGameInfo(int loadNumber, String sortingMethod){
 		Database db = new Database();
 		Connection conn = db.getConnection();

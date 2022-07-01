@@ -141,8 +141,9 @@
 					<c:forEach items="${gameInfoList}" var="nthGameInfo">
 						<div class="col-xs-6 col-sm-3 col-lg-2.4">
 							<div class="card shadow-sm">
-								<img src="https://via.placeholder.com/300x180.jpg"
+								<img src="http://localhost/worldcup/${nthGameInfo.gameImg}"
 									class="d-block w-100" alt="...">
+									<h1>${nthGameInfo.gameImg}</h1>
 								<div class="card-body">
 									<p class="card-text">${nthGameInfo.gameTitle}</p>
 									<div class="d-flex justify-content-between align-items-center">
