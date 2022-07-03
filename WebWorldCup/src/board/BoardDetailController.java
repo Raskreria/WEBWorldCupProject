@@ -28,7 +28,7 @@ public class BoardDetailController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("boardInfo", boardInfo);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/worldcup/"+category+"_detail.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/board/detail.jsp");
 		rd.forward(request, response);
 		
 	}

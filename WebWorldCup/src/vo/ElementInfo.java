@@ -15,6 +15,10 @@ public class ElementInfo {
 	}
 	
 	
+	public ElementInfo() {
+	}
+
+
 	public int getGameIdx() {
 		return gameIdx;
 	}

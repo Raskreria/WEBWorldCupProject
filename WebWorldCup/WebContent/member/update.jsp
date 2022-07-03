@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<!-- URLs.jsp -->
+<%@ include file="/includes/URLs.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 페이지</title>
+<title>회원정보 수정 페이지</title>
 <!-- 부트스트랩 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -22,13 +26,8 @@
 </head>
 <body class="text-center">
 
-
-	<!-- URLs.jsp -->
-	<%@ include file="/includes/URLs.jsp"%>
-
-
 	<main class="form-signin">
-		<form action="${JOIN_SERVLET}" method="POST">
+		<form action="${MEMBERINFO_UPDATE_SERVLET}" method="POST">
 			<h1 class="h3 mb-3 fw-normal">
 				<a href="${MAIN_PAGE}" id="logo"> <svg
 						xmlns="http://www.w3.org/2000/svg" width="70" height="70"
@@ -42,30 +41,35 @@
 			</h1>
 			<div class="form-floating">
 				<input type="text" class="form-control" id="floatingInput"
-					placeholder="Id" name="id"> <label for="floatingInput">아이디</label>
+					placeholder="Id" name="id" disabled value="${memberInfo.id}"> <label for="floatingInput">아이디</label>
 			</div>
 			<div class="form-floating">
-				<input type="password" class="form-control" id="floatingPassword"
-					placeholder="Password" name="pw"> <label
-					for="floatingPassword">비밀번호</label>
+				<input type="password" class="form-control" id="floatingCurrentPassword"
+					placeholder="CurrentPassword" name="currentPw"> <label
+					for="floatingCurrentPassword">현재 비밀번호</label>
+			</div>
+			<div class="form-floating">
+				<input type="password" class="form-control" id="floatingNewPassword"
+					placeholder="NewPassword" name="newPw"> <label
+					for="floatingNewPassword">새 비밀번호</label>
 			</div>
 			<div class="form-floating">
 				<input type="password" class="form-control"
-					id="floatingPasswordCheck" placeholder="Password" name="pwChk">
-				<label for="floatingPasswordCheck">비밀번호 확인</label>
+					id="floatingNewPasswordCheck" placeholder="NewPasswordCheck" name="pwChk">
+				<label for="floatingNewPasswordCheck">새 비밀번호 확인</label>
 			</div>
 			<div class="form-floating">
 				<input type="text" class="form-control" id="floatingName"
-					placeholder="Name" name="name"> <label for="floatingName">이름</label>
+					placeholder="Name" name="name" value="${memberInfo.name}"> <label for="floatingName">이름</label>
 			</div>
 			<div class="form-floating">
 				<input type="text" class="form-control" id="floatingAge"
-					placeholder="Age" name="age"> <label for="floatingAge">나이</label>
+					placeholder="Age" name="age" value="${memberInfo.age}"> <label for="floatingAge">나이</label>
 			</div>
 
 			<div class="form-floating">
 				<input type="text" class="form-control" id="floatingAddr"
-					placeholder="Addr" name="addr" disabled> <label
+					placeholder="Addr" name="addr" disabled value="${memberInfo.addr}"> <label
 					for="floatingAddr">주소</label>
 
 				<button class="btn btn-outline-success p-3 m-0" id="address-btn"
@@ -88,45 +92,21 @@
 
 
 
-			<div class="form-floating">
-				<ul class="list-group">
-					<li class="list-group-item">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="term1"> <label class="form-check-label" for="term1">
-								모든 약관 동의 </label>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="term2"> <label class="form-check-label" for="term2">
-								이용 약관 동의 </label>
-						</div>
-						<div class="terms">실컷 이용해 먹겠습니다</div>
-					</li>
-					<li class="list-group-item">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="term3"> <label class="form-check-label" for="term3">
-								개인정보 수집 및 이용 동의 </label>
-						</div>
-						<div class="terms">개인정보는 이제 제껍니다.</div>
-					</li>
-				</ul>
-			</div>
+			
 
 			<button id="submit_btn" class="w-100 btn btn-lg btn-secondary"
-				type="submit">회원가입</button>
+				type="submit">회원정보 수정</button>
 		</form>
 	</main>
 	<!-- 		제이쿼리 -->
 	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
+	
 	<!-- 	 	URLs.js -->
 	<script src="/worldcup/js/URLs.js"></script>
+	
 	<!-- 		다음 주소 서비스 -->
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		
 	<script type="text/javascript">
 // 		다음 주소 서비스 버튼 클릭 ajax
 			$("#address-btn").on("click",function(){
@@ -157,17 +137,12 @@
 					// 	 alert("회원가입버튼의 기본 클릭이벤트가 무시되었음.")
 					// 사용자가 입력한 값 검증
 					// (회원 가입 서블릿에서 정규표현식으로 검증했듯이 자바스크립트의 정규표현식을 사용해서 검증)
-					// 1. 아이디 검증
-					let $id = $("#floatingInput");
-					// 	 if($id.val() == ""){
-					// 		 //아이디를 입력하지 않았다면
-					// 		 alert("아이디를 입력하세요");
-					// 		 return false;
-					// 	 }
-					// 2. 비밀번호 검증
-					let $pw = $("#floatingPassword");
+					// 2. 현재 비밀번호 검증
+					let $currentPw = $("#floatingCurrentPassword");
+					// 3. 새 비밀번호 검증
+					let $newPw = $("#floatingNewPassword");
 					// 3. 비밀번호 확인 검증
-					let $pwChk = $("#floatingPasswordCheck");
+					let $pwChk = $("#floatingNewPasswordCheck");
 					// 4. 이름 검증
 					let $name = $("#floatingName");
 					
@@ -180,8 +155,7 @@
 					
 					
 
-					let id = $id.val();
-					let pw = $pw.val();
+					let newPw = $newPw.val();
 					let pwChk = $pwChk.val();
 					let name = $name.val();
 					let age = $age.val();
@@ -189,8 +163,7 @@
 					let zoneCode = $zoneCode.val();
 					
 					
-					console.log("id = " + id);
-					console.log("pw = " + pw);
+					console.log("newPw = " + newPw);
 					console.log("pwChk = " + pwChk);
 					console.log("name = " + name);
 					console.log("age = " + age);
@@ -198,16 +171,16 @@
 					console.log("zoneCode = " + zoneCode);
 
 					$.ajax({
-						url : JOIN_SERVLET,
+						url : MEMBERINFO_UPDATE_SERVLET,
 						type : "POST",
-						data : "id=" + id + "&pw=" + pw + "&pwChk=" + pwChk
+						data : "newPw=" + newPw + "&pwChk=" + pwChk
 								+ "&name=" + name + "&age="
 								+ age+ "&addr="
 								+ addr + "&zoneCode=" + zoneCode,
 						success : function() {
 							//회원가입에 성공했을 경우
-							alert("회원 가입이 되었습니다! 로그인 페이지로 이동합니다.");
-							location.href = LOGIN_PAGE;
+							alert("회원 정보가 수정 되었습니다! 메인 페이지로 이동합니다.");
+							location.href = MAIN_PAGE;
 						},
 						error : function(response) {
 							console.log(response);

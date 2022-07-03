@@ -20,6 +20,9 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+
+
+
 <!-- nav css -->
 <link rel="stylesheet" href="/worldcup/css/nav.css">
 <!-- URLs.js -->
@@ -35,7 +38,7 @@
 		<div class="container border border-dark border-3 mt-3 p-2 bg-white">
 			<div class="row">
 				<div class="data_area col-1 pl-2">
-
+					
 					<h5 class="Ntxt_today_webtoon">한눈에 보기</h5>
 					<p class="date" id="curDate">6월 25일 토요일</p>
 
@@ -139,23 +142,26 @@
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" id="thumbnailList">
 					<!-- 					썸네일 -->
 					<c:forEach items="${gameInfoList}" var="nthGameInfo">
+					
 						<div class="col-xs-6 col-sm-3 col-lg-2.4">
 							<div class="card shadow-sm">
-								<img src="http://localhost/worldcup/${nthGameInfo.gameImg}"
+								<img src="${nthGameInfo.gameImg}"
 									class="d-block w-100" alt="...">
-									<h1>${nthGameInfo.gameImg}</h1>
 								<div class="card-body">
+									<!-- 게임 제목 -->
 									<p class="card-text">${nthGameInfo.gameTitle}</p>
+									
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="btn-group">
-											<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-											<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+											<button type="button" class="btn btn-sm btn-outline-secondary">게임시작</button>
+											<button type="button" class="btn btn-sm btn-outline-secondary">공유</button>
+											<button type="button" class="btn btn-sm btn-outline-secondary">랭킹보기</button>
 										</div>
-										<small class="text-muted">9 mins</small>
 									</div>
 								</div>
 							</div>
 						</div>
+						
 					</c:forEach>
 					
 
@@ -164,9 +170,8 @@
 			</div>
 		</div>
 	</section>
-
-
-	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
+<!-- 제이쿼리 -->
+<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
 		$(window).scroll(
 				function() { //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.

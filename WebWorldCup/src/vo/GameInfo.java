@@ -17,10 +17,11 @@ public class GameInfo {
 	}
 
 	
-	public GameInfo(int gameIdx, int regMemberIdx, String gameTitle, String gameImg) {
+	public GameInfo(int regMemberIdx, String gameTitle, String gameImg, LocalDateTime regDate) {
 		this.regMemberIdx = regMemberIdx;
 		this.gameTitle = gameTitle;
 		this.gameImg = gameImg;
+		this.regDate = regDate;
 	}
 
 

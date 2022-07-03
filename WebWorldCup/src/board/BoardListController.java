@@ -16,7 +16,10 @@ import vo.BoardInfo;
 @WebServlet("/board/list")
 public class BoardListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category");
+		String category = "notice";
+		if(request.getParameter("category") != null) {
+			category = request.getParameter("category");
+		}
 		int pageNumber = 1;
 		if(request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
@@ -34,7 +37,7 @@ public class BoardListController extends HttpServlet {
 		List<BoardInfo> boardList = dao.selectBoardsByPageNumber(category,pageNumber);
 		
 		request.setAttribute("boardList", boardList);
-		RequestDispatcher rd = request.getRequestDispatcher("/worldcup/"+category+"_list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/board/board.jsp");
 		rd.forward(request, response);
 		
 		

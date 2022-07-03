@@ -1,33 +1,19 @@
 @charset "UTF-8";
 
-#boardCategory{
-	position:fixed;
-    top: 100px;
-    left: 30px;
-}
+
+
 #boardListform{
 	float:right;
 	margin-right:150px;
 	margin-top:100px;
 }
 
-#boardCategory>ul{
-	list-style: none;
-	padding:0px;	
-}
-
-
-#boardCategory>ul>li>a{
-	border: 1px solid black;
+tbody>tr>td>a{
     color: black;
     text-decoration: none;
-    display: block;
-    text-align: center;
     font-size: 18px;
-    padding: 7px 0px 7px;
 }
-#boardCategory>ul>li>a:hover{
-	
-	background-color:green;
+tbody>tr>td>a:hover{
+    color: black;
+    text-decoration: underline;
 }
-

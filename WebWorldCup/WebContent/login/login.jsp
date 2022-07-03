@@ -74,5 +74,40 @@
 		
 				
 	</main>
+	
+	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
+	   <script src="../js/URLs.js"></script>
+	<script type="text/javascript">
+
+		$("#loginbtn").on("click", function() {
+
+			let id = $("#floatingInput").val();
+			let pw = $("#floatingPassword").val();
+			console.log(id);
+			console.log(pw);
+
+
+			$.ajax({
+				url : LOGIN_SERVLET,
+				type : "POST",
+				data : "id=" + id + "&pw=" + pw,
+				success : function(result) {
+					alert("로그인 성공 메인 페이지로 이동합니다.");
+					location.href = MAIN_PAGE;
+				},
+				error : function(result) {
+					if (result.status == 400) {
+						alert("아이디와 비밀번호를 바르게 입력해주세요");
+					} else {
+						alert("아이디 비밀번호가 일치하지 않습니다.");
+					}
+
+				}
+			});
+		});
+		$("#joinbtn").on("click", function() {
+			location.href = JOIN_PAGE;
+		});
+	</script>
 </body>
 </html>

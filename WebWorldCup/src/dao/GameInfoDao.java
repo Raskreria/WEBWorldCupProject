@@ -22,13 +22,15 @@ public class GameInfoDao {
 
 		try {
 
-			String sql = "INSERT INTO gmaeInfo(regMemberIdx,gmaeTitle,gmaeImg) VALUES(?, ?, ?)";
+			String sql = "INSERT INTO gameInfo(regMemberIdx,gameTitle,gameImg,regDate) VALUES(?, ?, ?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, gameInfo.getRegMemeberIdx());
 			pstmt.setString(2, gameInfo.getGameTitle());
 			pstmt.setString(3, gameInfo.getGameImg());
-
+			pstmt.setString(4, gameInfo.getRegDate().toString());
+			
+			
 			int count = pstmt.executeUpdate();
 
 			return count == 1;

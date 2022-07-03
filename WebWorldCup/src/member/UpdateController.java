@@ -2,6 +2,7 @@ package member;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.MemberInfoDao;
 import exception.BadParameterException;
 import service.MemberService;
 import util.Validator;
@@ -16,9 +18,21 @@ import vo.MemberInfo;
 
 @WebServlet("/member/update")
 public class UpdateController extends HttpServlet {
+	//회원정보 수정 페이지 기존 회원 정보 가져오기
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		MemberInfo memberInfo = (MemberInfo)session.getAttribute("loginUserInfo");
+		String id = memberInfo.getId();
+		
+		MemberInfoDao dao = new MemberInfoDao();
+		MemberInfo searchMemberInfo = dao.selectById(id);
+		
+		request.setAttribute("memberInfo", searchMemberInfo);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/member/update.jsp");
+		rd.forward(request, response);
 	}
-
+	//회원정보 수정 반영
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			//1. 수정할 정보 받아오기

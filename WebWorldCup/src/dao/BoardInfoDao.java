@@ -259,6 +259,35 @@ public class BoardInfoDao {
 		
 	}
 	
-	
 
+	public int getAmountOfBoard(String category) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int amount = 0;
+		
+		try {
+			String sql = "SELECT COUNT(*) AS amount FROM boardInfo";
+			sql = sql.replace("board", category);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			amount = rs.getInt("amount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closeResultSet(rs);
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		
+		return amount;
+	}
 }
