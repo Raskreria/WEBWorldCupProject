@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `noticeinfo` (
   `file` varchar(30) DEFAULT NULL COMMENT '파일 경로',
   `pubDate` datetime NOT NULL COMMENT '게시 날짜',
   `views` int(11) NOT NULL DEFAULT 0 COMMENT '조회수',
-  `like` int(11) NOT NULL DEFAULT 0 COMMENT '좋아요',
+  `likes` int(11) NOT NULL DEFAULT 0 COMMENT '좋아요',
   PRIMARY KEY (`noticeIdx`),
   KEY `FK_noticeinfo_memberinfo` (`memberIdx`),
   CONSTRAINT `FK_noticeinfo_memberinfo` FOREIGN KEY (`memberIdx`) REFERENCES `memberinfo` (`memberIdx`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -166,8 +166,8 @@ CREATE TABLE IF NOT EXISTS `noticeinfo` (
 
 -- 테이블 데이터 worldcupgame.noticeinfo:~27 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `noticeinfo` DISABLE KEYS */;
-REPLACE INTO `noticeinfo` (`noticeIdx`, `memberIdx`, `noticeTitle`, `noticeContents`, `file`, `pubDate`, `views`, `like`) VALUES
-	(1, 1, '첫번째 공지사항', '공지사항1', NULL, '2022-06-12 23:53:18', 0, 0),
+REPLACE INTO `noticeinfo` (`noticeIdx`, `memberIdx`, `noticeTitle`, `noticeContents`, `file`, `pubDate`, `views`, `likes`) VALUES
+	(1, 1, '첫번째 공지사항', '공지사항1', NULL, '2022-06-12 23:53:18', 1, 0),
 	(2, 1, '공지사항1', '공지사항1 내', '/file/board/20220616개발진행도.txt', '2022-06-24 01:24:19', 0, 0),
 	(3, 1, '공지사항2', '공지사항2 내용', NULL, '2022-07-02 19:28:12', 0, 0),
 	(4, 1, '공지사항2', '공지사항2 내용', NULL, '2022-07-02 19:28:28', 0, 0),
@@ -186,14 +186,14 @@ REPLACE INTO `noticeinfo` (`noticeIdx`, `memberIdx`, `noticeTitle`, `noticeConte
 	(17, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵13.jpg', '2022-07-02 19:34:52', 0, 0),
 	(18, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵14.jpg', '2022-07-02 19:34:53', 0, 0),
 	(19, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵15.jpg', '2022-07-02 19:34:53', 0, 0),
-	(20, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵16.jpg', '2022-07-02 19:34:54', 0, 0),
-	(21, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵17.jpg', '2022-07-02 19:34:55', 0, 0),
-	(22, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵18.jpg', '2022-07-02 19:34:57', 0, 0),
+	(20, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵16.jpg', '2022-07-02 19:34:54', 1, 0),
+	(21, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵17.jpg', '2022-07-02 19:34:55', 7, 0),
+	(22, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵18.jpg', '2022-07-02 19:34:57', 1, 0),
 	(23, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵19.jpg', '2022-07-02 19:34:58', 0, 0),
 	(24, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵20.jpg', '2022-07-02 19:34:59', 0, 0),
-	(25, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵21.jpg', '2022-07-02 19:35:01', 0, 0),
+	(25, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵21.jpg', '2022-07-02 19:35:01', 2, 0),
 	(26, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵22.jpg', '2022-07-02 19:35:02', 0, 0),
-	(27, 1, 'Last Notice ', 'Notice Contents', '/file/board/카페월드컵23.jpg', '2022-07-02 19:35:59', 3, 13);
+	(27, 1, 'Last Notice ', 'Notice Contents', '/file/board/카페월드컵23.jpg', '2022-07-02 19:35:59', 49, 13);
 /*!40000 ALTER TABLE `noticeinfo` ENABLE KEYS */;
 
 -- 테이블 worldcupgame.recordinfo 구조 내보내기
