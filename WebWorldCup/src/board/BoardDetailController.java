@@ -18,15 +18,18 @@ import vo.BoardInfo;
 @WebServlet("/board/detail")
 public class BoardDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//상세보기 페이지를 위한 데이터 세션에 저장
 		String category = request.getParameter("category");
 		int boardIdx = Integer.parseInt(request.getParameter(category+"Idx"));
 		
 		BoardInfoDao dao = new BoardInfoDao();
 		BoardInfo boardInfo = dao.selectBoardByBoardIdx(category,boardIdx);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("boardInfo", boardInfo);
+		request.setAttribute("boardInfo", boardInfo);
+		
+		//조회수 1 올리기
+		dao.increaseViewsByBoardIdx(category, boardIdx);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/board/detail.jsp");
 		rd.forward(request, response);

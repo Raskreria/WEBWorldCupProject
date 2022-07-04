@@ -77,7 +77,7 @@
 			
 			<!-- 게시판 footer(첨부파일) -->
 			<div id="boardReadFooter">
-			<p>좋아요 ${boardInfo.like}</p>
+			<button id="boardLikebtn" type="button">좋아요 ${boardInfo.likes}</button>
 			<p>첨부파일 : ${boardInfo.file}</p>
 			</div>
 			
@@ -101,6 +101,35 @@
 		</div>
 	
 	</section>
+	
+	
+		
+	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
+	<script src="../js/URLs.js"></script>
+	<script type="text/javascript">
+	
+	
 
+		$("#boardLikebtn").on("click", function() {
+
+			let id = $("#floatingInput").val();
+			let pw = $("#floatingPassword").val();
+
+
+
+			$.ajax({
+				url : BOARD_LIKE_SERVLET,
+				type : "POST",
+				data : "category=notice" + "&noticeIdx=27",
+				success : function(result) {
+					alert("좋아요가 반영되었습니다.");
+				},
+				error : function(result) {
+					alert("에러발생");
+				}
+			});
+		});
+	</script>
+	
 </body>
 </html>

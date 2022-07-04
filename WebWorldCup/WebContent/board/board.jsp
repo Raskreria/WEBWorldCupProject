@@ -67,7 +67,7 @@
 
 						<td>${nthBoardInfo.pubDate}</td>
 						<td>${nthBoardInfo.views}</td>
-						<td>${nthBoardInfo.like}</td>
+						<td>${nthBoardInfo.likes}</td>
 					</tr>
 				</c:forEach>
 

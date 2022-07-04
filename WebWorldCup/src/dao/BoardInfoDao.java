@@ -38,11 +38,12 @@ public class BoardInfoDao {
 				System.out.println(t_pubDate);
 				t_pubDate = t_pubDate.replace(" ", "T");
 				LocalDateTime pubDate = LocalDateTime.parse(t_pubDate);
-				
-				int views = rs.getInt("views");
-				int like = rs.getInt("like");
 
-				BoardInfo nthBoardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate, views, like);
+				int views = rs.getInt("views");
+				int likes = rs.getInt("likes");
+
+				BoardInfo nthBoardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate, views,
+						likes);
 
 				boardList.add(nthBoardInfo);
 			}
@@ -102,7 +103,7 @@ public class BoardInfoDao {
 			pstmt.setInt(1, boardIdx);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
-			
+
 			int memberIdx = rs.getInt("memberIdx");
 			String title = rs.getString(category + "Title");
 			String contents = rs.getString(category + "Contents");
@@ -112,9 +113,9 @@ public class BoardInfoDao {
 			t_pubDate = t_pubDate.replace(" ", "T");
 			LocalDateTime pubDate = LocalDateTime.parse(t_pubDate);
 			int views = rs.getInt("views");
-			int like = rs.getInt("like");
-			
-			boardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate, views, like);
+			int likes = rs.getInt("likes");
+
+			boardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate, views, likes);
 
 			return boardInfo;
 		} catch (SQLException e) {
@@ -170,7 +171,7 @@ public class BoardInfoDao {
 		sql = sql.replace("category", category);
 
 		try {
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardInfo.getBoardTitle());
 			pstmt.setString(2, boardInfo.getBoardContents());
@@ -188,24 +189,24 @@ public class BoardInfoDao {
 
 		return result;
 	}
-	
-	public boolean deleteBoradInfoByIdx (int boardIdx, String category) {
+
+	public boolean deleteBoradInfoByIdx(int boardIdx, String category) {
 		Database db = new Database();
-		
+
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
-		
+
 		boolean result = false;
-		
+
 		try {
 			String sql = "DELETE FROM categoryInfo WHERE categoryidx = ?";
 			sql = sql.replace("category", category);
-			
+
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, boardIdx );
-			
+			pstmt.setInt(1, boardIdx);
+
 			int count = pstmt.executeUpdate();
-			
+
 			result = count == 1;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -213,77 +214,77 @@ public class BoardInfoDao {
 			db.closePstmt(pstmt);
 			db.closeConnection(conn);
 		}
-		
+
 		return result;
 	}
-	
+
 	public void deleteFileByBoardIdx(String category, int boardIdx) {
 		Database db = new Database();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			String sql;
 			sql = "UPDATE categoryInfo SET file = ? WHERE categoryidx = ?";
 			sql = sql.replace("category", category);
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, null);
 			pstmt.setInt(2, boardIdx);
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			db.closePstmt(pstmt);
 			db.closeConnection(conn);
 		}
-		
+
 	}
+
 	public void addFileByBoardIdx(String category, int boardIdx, String filePath) {
 		Database db = new Database();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			String sql;
 			sql = "UPDATE categoryInfo SET file = ? WHERE categoryidx = ?";
 			sql = sql.replace("category", category);
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, filePath);
 			pstmt.setInt(2, boardIdx);
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			db.closePstmt(pstmt);
 			db.closeConnection(conn);
 		}
-		
+
 	}
-	
 
 	public int getAmountOfBoard(String category) {
 		Database db = new Database();
-		
+
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		int amount = 0;
-		
+
 		try {
 			String sql = "SELECT COUNT(*) AS amount FROM boardInfo";
 			sql = sql.replace("board", category);
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			rs.next();
-			
+
 			amount = rs.getInt("amount");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -292,7 +293,62 @@ public class BoardInfoDao {
 			db.closePstmt(pstmt);
 			db.closeConnection(conn);
 		}
-		
+
 		return amount;
+	}
+
+	public boolean increaseViewsByBoardIdx(String category, int boardIdx) {
+		Database db = new Database();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean result = false;
+
+		try {
+			String sql;
+
+			sql = "UPDATE categoryInfo SET views = views+1 WHERE categoryidx = ?";
+			sql = sql.replace("category", category);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardIdx);
+
+			pstmt.executeUpdate();
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return result;
+	}
+	
+	
+	public boolean updownLikesByBoardIdx(String category, int boardIdx, int updown) {
+		Database db = new Database();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean result = false;
+
+		try {
+			String sql;
+
+			sql = "UPDATE categoryInfo SET likes = likes+updown WHERE categoryIdx = ?";
+			sql = sql.replace("category", category);
+			sql = sql.replace("updown", Integer.toString(updown));
+						
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardIdx);
+
+			pstmt.executeUpdate();
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return result;
 	}
 }

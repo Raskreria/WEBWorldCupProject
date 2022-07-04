@@ -12,7 +12,7 @@ public class BoardInfo {
 	private LocalDateTime pubDate;
 	
 	private int views;
-	private int like;
+	private int likes;
 	
 	
 	public BoardInfo(int boardIdx, String boardTitle, String boardContents) {
@@ -28,7 +28,7 @@ public class BoardInfo {
 		this.pubDate = pubDate;
 	}	
 	public BoardInfo(int boardIdx, int memberIdx, String boardTitle, String boardContents, String file,
-			LocalDateTime pubDate, int views, int like) {
+			LocalDateTime pubDate, int views, int likes) {
 		this.boardIdx = boardIdx;
 		this.memberIdx = memberIdx;
 		this.boardTitle = boardTitle;
@@ -36,7 +36,7 @@ public class BoardInfo {
 		this.file = file;
 		this.pubDate = pubDate;
 		this.views = views;
-		this.like = like;
+		this.likes = likes;
 	}
 	public int getBoardIdx() {
 		return boardIdx;
@@ -80,11 +80,11 @@ public class BoardInfo {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	public int getLike() {
-		return like;
+	public int getLikes() {
+		return likes;
 	}
 	public void setLike(int like) {
-		this.like = like;
+		this.likes = like;
 	}
 	
 	

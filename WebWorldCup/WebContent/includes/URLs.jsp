@@ -11,6 +11,7 @@
 
 
 <c:set var="BOARD_DETAIL_SERVLET" value="/worldcup/board/detail"/>
+
 <c:set var="MEMBERINFO_SERVLET" value="/worldcup/member/update"/>
 <c:set var="MEMBERINFO_UPDATE_SERVLET" value="/worldcup/member/update"/>
 
