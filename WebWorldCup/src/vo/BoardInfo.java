@@ -11,6 +11,9 @@ public class BoardInfo {
 	private String file;
 	private LocalDateTime pubDate;
 	
+	private int views;
+	private int like;
+	
 	
 	public BoardInfo(int boardIdx, String boardTitle, String boardContents) {
 		this.boardIdx = boardIdx;
@@ -25,13 +28,15 @@ public class BoardInfo {
 		this.pubDate = pubDate;
 	}	
 	public BoardInfo(int boardIdx, int memberIdx, String boardTitle, String boardContents, String file,
-			LocalDateTime pubDate) {
+			LocalDateTime pubDate, int views, int like) {
 		this.boardIdx = boardIdx;
 		this.memberIdx = memberIdx;
 		this.boardTitle = boardTitle;
 		this.boardContents = boardContents;
 		this.file = file;
 		this.pubDate = pubDate;
+		this.views = views;
+		this.like = like;
 	}
 	public int getBoardIdx() {
 		return boardIdx;
@@ -69,7 +74,18 @@ public class BoardInfo {
 	public void setPubDate(LocalDateTime pubDate) {
 		this.pubDate = pubDate;
 	}
-	
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
+	}
+	public int getLike() {
+		return like;
+	}
+	public void setLike(int like) {
+		this.like = like;
+	}
 	
 	
 	

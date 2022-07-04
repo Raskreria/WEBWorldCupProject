@@ -54,6 +54,7 @@
 					<th scope="col">작성자</th>
 					<th scope="col">작성일</th>
 					<th scope="col">조회</th>
+					<th scope="col">좋아요</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -65,8 +66,8 @@
 						<td>${nthBoardInfo.memberIdx}</td>
 
 						<td>${nthBoardInfo.pubDate}</td>
-						<td>#미완#</td>
-
+						<td>${nthBoardInfo.views}</td>
+						<td>${nthBoardInfo.like}</td>
 					</tr>
 				</c:forEach>
 

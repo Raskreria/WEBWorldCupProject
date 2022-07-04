@@ -38,8 +38,11 @@ public class BoardInfoDao {
 				System.out.println(t_pubDate);
 				t_pubDate = t_pubDate.replace(" ", "T");
 				LocalDateTime pubDate = LocalDateTime.parse(t_pubDate);
+				
+				int views = rs.getInt("views");
+				int like = rs.getInt("like");
 
-				BoardInfo nthBoardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate);
+				BoardInfo nthBoardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate, views, like);
 
 				boardList.add(nthBoardInfo);
 			}
@@ -108,8 +111,10 @@ public class BoardInfoDao {
 			System.out.println(t_pubDate);
 			t_pubDate = t_pubDate.replace(" ", "T");
 			LocalDateTime pubDate = LocalDateTime.parse(t_pubDate);
-
-			boardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate);
+			int views = rs.getInt("views");
+			int like = rs.getInt("like");
+			
+			boardInfo = new BoardInfo(boardIdx, memberIdx, title, contents, file, pubDate, views, like);
 
 			return boardInfo;
 		} catch (SQLException e) {
