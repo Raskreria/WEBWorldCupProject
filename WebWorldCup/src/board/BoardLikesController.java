@@ -13,7 +13,7 @@ import dao.BoardInfoDao;
 
 //게시판 글 좋아요 컨트롤러 0704에 추가함
 // 미완
-@WebServlet("/board/like")
+@WebServlet("/board/likes")
 public class BoardLikesController extends HttpServlet {
 	// 한번 누르면 종아요 1 올라가고 한번 더 누르면 -1 되어서 다시 원래대로 돌아오게 하고 싶음
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

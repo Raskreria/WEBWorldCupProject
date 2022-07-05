@@ -35,7 +35,7 @@ public class BoardListController extends HttpServlet {
 		}
 		
 		List<BoardInfo> boardList = dao.selectBoardsByPageNumber(category,pageNumber);
-		
+		request.setAttribute("category", category);
 		request.setAttribute("boardList", boardList);
 		RequestDispatcher rd = request.getRequestDispatcher("/board/board.jsp");
 		rd.forward(request, response);

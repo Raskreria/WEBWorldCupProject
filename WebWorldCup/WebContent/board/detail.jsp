@@ -35,15 +35,8 @@
 	<!-- 헤더 -->
 	<%@ include file="/includes/header.jsp"%>
 
-	<!-- 사이드바 -->
-	<div id="boardCategory" class="container col-2">
-		<h2>공지사항</h2>
-		<hr>
-		<ul>
-			<li><a href="#" class="selected">공지사항</a></li>
-			<li><a href="#">커뮤니티</a></li>
-		</ul>
-	</div>
+	<!-- 사이드바 -->	
+	<%@ include file="/includes/boardSideBar.jsp"%>
 	
 	<!-- 	게시판 상세 -->
 	<section>
@@ -75,7 +68,7 @@
 			${boardInfo.boardContents} 
 			</div>
 			
-			<!-- 게시판 footer(첨부파일) -->
+			<!-- 게시판 footer(첨부파일,좋아요) -->
 			<div id="boardReadFooter">
 			<a id="boardLikebtn" type="button">
 				<svg id="LikeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -83,25 +76,38 @@
 				</svg>	
 				<span id="boardLike">${boardInfo.likes}</span>
 			</a>
-			<p>첨부파일 : ${boardInfo.file}</p>
+			
+			<br/>
+			<br/>
+			
+			<div id="file_wrapper">
+				첨부파일 : <a href="/worldcup/${boardInfo.file}" download>${boardInfo.file}</a>
+			</div>
 			</div>
 			
 			<hr>
 			
 			<!-- 게시판 댓글 -->
+			
 			<div id="boardReadComment">
 				<div data-v-3b426d7d="" class="CommentWriter">
 					<div class="comment_inbox">
-						<b class="comment_inbox_name">${loginUserInfo.name}</b>
-						<textarea data-v-3b426d7d="" placeholder="댓글을 남겨보세요" rows="3"class="comment_inbox_text"style="overflow: hidden; overflow-wrap: break-word; height: 18px;">
-						</textarea>
+						<c:if test="${loginUserInfo ne null}">
+							<b class="comment_inbox_name">${loginUserInfo.name}</b>
+							<textarea data-v-3b426d7d="" placeholder="댓글을 남겨보세요" rows="3"class="comment_inbox_text"style="overflow: hidden; overflow-wrap: break-word; height: 18px;">
+							</textarea>
+						</c:if>
+						<c:if test="${loginUserInfo eq null}">
+							로그인 후 댓글을 다실 수 있습니다.
+						</c:if>
 					</div>
 				</div>
 			</div>
 			
 			<!-- 게시판 Nav -->
 			<div id="boardReadNavigation">
-			페이지네이션자리입니다
+			<button id="prevPage" type="button">목록으로</button>
+				<p>페이지네이션자리입니다</p>
 			</div>
 		</div>
 	
@@ -110,16 +116,16 @@
 	
 		
 	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
-	<script src="../js/URLs.js"></script>
+	<script src="/worldcup/js/URLs.js"></script>
 	<script type="text/javascript">
 	
 	//좋아요 a태그 ajax
 	let updown=1;	
 		$("#boardLikebtn").on("click", function() {
 			$.ajax({
-				url : BOARD_LIKE_SERVLET,
+				url : "/worldcup/board/likes",
 				type : "POST",
-				data : "category=notice" + "&noticeIdx="+${boardInfo.boardIdx}+"&updown="+updown,
+				data : "category=${category}" + "&${category}Idx="+${boardInfo.boardIdx}+"&updown="+updown,
 				success : function(result) {
 					alert("좋아요가 반영되었습니다.");
 					if(updown == 1){
@@ -138,6 +144,11 @@
 					alert("에러발생");
 				}
 			});
+		});
+		
+		$("#prevPage").on("click", function() {
+			window.location = document.referrer;
+// 			window.history.back();
 		});
 	</script>
 

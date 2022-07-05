@@ -26,7 +26,7 @@ public class BoardDetailController extends HttpServlet {
 		BoardInfo boardInfo = dao.selectBoardByBoardIdx(category,boardIdx);
 		
 		request.setAttribute("boardInfo", boardInfo);
-		
+		request.setAttribute("category", category);
 		//조회수 1 올리기
 		dao.increaseViewsByBoardIdx(category, boardIdx);
 		

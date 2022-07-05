@@ -102,10 +102,10 @@
 
 <script>
 			$("#logout").on("click",function(event){ 
-				event.preventDefault();
-				sessionStorage.removeItem("loginUserInfo");
-				alert("로그아웃 되었습니다.");
-				location.reload();
+				alert("로그아웃");
+				location.href = "/worldcup/member/logout";
 			});
+			
+			
 
 </script>

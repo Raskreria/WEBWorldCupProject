@@ -23,7 +23,7 @@ public class BoardWriteController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-		String path = request.getRealPath("/file/board");
+		String path = request.getRealPath("file/board");
 		MultipartRequest multi = new MultipartRequest(request, path, MAXIMUM_FILE_SIZE, "UTF-8", new DefaultFileRenamePolicy());
 		
 		request.setCharacterEncoding("UTF-8");
@@ -36,7 +36,7 @@ public class BoardWriteController extends HttpServlet {
 		String fileSystemName = multi.getFilesystemName("file");
 		String filePath = null;
 		if(fileSystemName != null) {
-			filePath = "/file/board/" + fileSystemName;
+			filePath = "file/board/" + fileSystemName;
 		}
 		
 		HttpSession session = request.getSession();

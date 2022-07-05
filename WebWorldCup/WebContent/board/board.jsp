@@ -35,18 +35,19 @@
 	<!-- 헤더 -->
 	<%@ include file="/includes/header.jsp"%>
 	<!-- 사이드바 -->
-	<div id="boardCategory" class="container col-2">
-		<h2>공지사항</h2>
-		<hr>
-		<ul>
-			<li><a href="#" class="selected">공지사항</a></li>
-			<li><a href="#">커뮤니티</a></li>
-		</ul>
-	</div>
+	<%@ include file="/includes/boardSideBar.jsp"%>
+	
 <!-- 	게시판 목록 -->
 	<div id="boardListform" class="container col-8">
 		<table class="table caption-top">
-			<caption>공지사항</caption>
+			<caption>
+				<c:if test="${category eq 'notice'}">
+				공지사항
+				</c:if>
+				<c:if test="${category eq 'community'}">
+				커뮤니티
+				</c:if>
+			</caption>
 			<thead>
 				<tr>
 					<th scope="col">#</th>
@@ -62,7 +63,7 @@
 
 					<tr>
 						<th scope="row">${nthBoardInfo.boardIdx}</th>
-						<td><a href="${BOARD_DETAIL_SERVLET}?category=notice&noticeIdx=${nthBoardInfo.boardIdx}">${nthBoardInfo.boardTitle}</a></td>
+						<td><a href="${BOARD_DETAIL_SERVLET}?category=${category}&${category}Idx=${nthBoardInfo.boardIdx}">${nthBoardInfo.boardTitle}</a></td>
 						<td>${nthBoardInfo.memberIdx}</td>
 
 						<td>${nthBoardInfo.pubDate}</td>
@@ -89,11 +90,12 @@
 	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
 	<script src="/worldcup/js/URLs.js"></script>
 	<script type="text/javascript">
+	
 		// 공지사항 목록의 페이지네이션을 구성할 ajax
 		// ajax가 공지사항의 전체 개수를 받아와서
 		// 전체 개수를 사용해서 적절히 페이지네이션을 출력
 		$.ajax({
-			url : BOARD_AMOUNT_SERVLET,
+			url : BOARD_AMOUNT_SERVLET+"?category=${category}",
 			type : "GET",
 			success : function(amount) {
 				let roofCount = Math.ceil(amount / 10);
@@ -101,7 +103,7 @@
 				for (let i = 1; i <= roofCount; i++) {
 					// 페이지네이션 출력
 					$("#pagenation li:last-child").before("<li id=\"page-"+i+"\"class=\"page-item\">"
-									+"<a class=\"page-link\" href=\"#\" >"
+									+"<a class=\"page-link\" href=\""+Board_LIST_SERVLET+"?category="+"${category}"+"&pageNumber="+i+"\" >"
 											+i+"</a></li>"
 					
 					);
@@ -113,6 +115,8 @@
 				console.log(error);
 			}
 		});
+		
+		
 	</script>
 </body>
 </html>
