@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 상세 페이지</title>
+<title>게시판 수정 페이지</title>
 <!-- 부트스트랩 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -166,7 +166,7 @@
 		//수정 버튼
 		$(".boardUpdatebtn").on("click", function() {
 			alert("수정하기");
-			location.href="/worldcup/board/update.jsp";
+			location.href="/worldcup/update.jsp";
 		});
 		
 		

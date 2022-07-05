@@ -24,9 +24,10 @@ public class GameController extends HttpServlet {
 		ElementInfoDao dao = new ElementInfoDao();
 		List<ElementInfo> elementInfoList = dao.selectElementsByGameIdx(gameIdx);
 		
+		
 		//3. JSP에서 사용하기 위해 객체로 저장.
 		request.setAttribute("elementInfoList", elementInfoList);
-		RequestDispatcher rd = request.getRequestDispatcher("/worldcup/");
+		RequestDispatcher rd = request.getRequestDispatcher("/game/play.jsp");
 		rd.forward(request, response);
 	}
 

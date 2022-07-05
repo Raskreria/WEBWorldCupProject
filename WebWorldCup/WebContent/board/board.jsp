@@ -84,6 +84,12 @@
 				<li class="page-item"><a class="page-link" href="#">Next</a></li>
 			</ul>
 		</nav>
+		
+		<div id="boardBottombtn">
+				<c:if test="${loginUserInfo ne null}">
+					<button class="boardWritebtn" type="button" style="float:right;">글쓰기</button>
+				</c:if>
+		</div>
 	</div>
 
 	<!-- 제이쿼리 -->
@@ -115,7 +121,9 @@
 				console.log(error);
 			}
 		});
-		
+		$(".boardWritebtn").on("click",function(){
+			location.href="/worldcup/board/write.jsp?category=${category}";
+		});
 		
 	</script>
 </body>

@@ -52,7 +52,7 @@ public class BoardWriteController extends HttpServlet {
 		if(result) {
 			// 공지사항 목록 페이지로 이동
 			response.setStatus(HttpServletResponse.SC_OK);
-			response.sendRedirect("/worldcup/board/board.jsp");
+			response.sendRedirect("/worldcup/board/list");
 		} else {
 			// 공지사항 추가 실패와 관련된 처리를 함
 		}

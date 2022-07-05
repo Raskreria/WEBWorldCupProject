@@ -27,7 +27,7 @@ public class ElementInfoDao {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				int elementIdx = rs.getInt("gameIdx");
+				int elementIdx = rs.getInt("elementIdx");
 				String elementTitle = rs.getString("elementTitle");
 				String elementImg = rs.getString("elementImg");
 
