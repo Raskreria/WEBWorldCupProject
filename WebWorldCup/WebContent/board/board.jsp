@@ -78,6 +78,8 @@
 		<nav aria-label="Page navigation example">
 			<ul id="pagenation" class="pagination justify-content-center">
 				<li class="page-item disabled"><a class="page-link">Previous</a></li>
+				
+				
 				<li class="page-item"><a class="page-link" href="#">Next</a></li>
 			</ul>
 		</nav>
@@ -98,7 +100,7 @@
 
 				for (let i = 1; i <= roofCount; i++) {
 					// 페이지네이션 출력
-					$("#pagenation li:last-child").before("<li class=\"page-item\">"
+					$("#pagenation li:last-child").before("<li id=\"page-"+i+"\"class=\"page-item\">"
 									+"<a class=\"page-link\" href=\"#\" >"
 											+i+"</a></li>"
 					

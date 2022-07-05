@@ -324,13 +324,12 @@ public class BoardInfoDao {
 	}
 	
 	
-	public boolean updownLikesByBoardIdx(String category, int boardIdx, int updown) {
+	public int updownLikesByBoardIdx(String category, int boardIdx, int updown) {
 		Database db = new Database();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean result = false;
-
+		int likes = 0;
 		try {
 			String sql;
 
@@ -342,13 +341,23 @@ public class BoardInfoDao {
 			pstmt.setInt(1, boardIdx);
 
 			pstmt.executeUpdate();
-			result = true;
+			
+			
+			sql = "SELECT * FROM categoryInfo WHERE categoryIdx = ?";
+			sql = sql.replace("category", category);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardIdx);
+			rs = pstmt.executeQuery();
+			rs.next();
+			
+			likes = rs.getInt("likes");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			db.closePstmt(pstmt);
 			db.closeConnection(conn);
 		}
-		return result;
+		return likes;
 	}
 }
