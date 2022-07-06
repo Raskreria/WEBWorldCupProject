@@ -55,17 +55,17 @@ public class GameInfoDao {
 			sql="SELECT COUNT(0)AS amount, a.gameIdx, a.gameTitle, a.gameImg "
 			+ "FROM gameInfo AS a LEFT OUTER JOIN recordInfo AS b ON a.gameIdx = b.gameIdx "
 			+ "group BY a.gameIdx "
-			+ "ORDER BY amount desc LIMIT ?, 10";
+			+ "ORDER BY amount ASC LIMIT ?, 10";
 		}else {
 			sql="SELECT * "
-					+ "FROM gamesthumbnailinfo "
-					+ "ORDER BY regDate asc LIMIT ?, 10";
+					+ "FROM gameInfo "
+					+ "ORDER BY regDate desc LIMIT ?, 10";
 		}
 		
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, (loadNumber - 1) * 8);
+			pstmt.setInt(1, (loadNumber - 1) * 10);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

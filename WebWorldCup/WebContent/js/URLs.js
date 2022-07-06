@@ -3,9 +3,12 @@ let JOIN_PAGE = "/worldcup/join/join.jsp";
 let LOGIN_PAGE = "/worldcup/login/login.jsp";
 
 
+let MAIN_THUMBNAIL_SEVLET = "/worldcup/main/list";
 
+let MAIN_SEARCH_SEVLET = "/worldcup/main/gamesearch";
 
 let LOGIN_SERVLET ="/worldcup/member/login";
+
 let BOARD_AMOUNT_SERVLET = "/worldcup/board/amount";
 let BOARD_LIKE_SERVLET = "/worldcup/board/likes";
 let JOIN_SERVLET = "/worldcup/member/join";

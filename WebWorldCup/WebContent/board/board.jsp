@@ -49,6 +49,7 @@
 				</c:if>
 			</caption>
 			<thead>
+			
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">제목</th>
@@ -56,6 +57,9 @@
 					<th scope="col">작성일</th>
 					<th scope="col">조회</th>
 					<th scope="col">좋아요</th>
+					<c:if test="${loginUserInfo.id eq 'admin'}">
+						<th scope="col">삭제</th>
+					</c:if>
 				</tr>
 			</thead>
 			<tbody>
@@ -69,6 +73,11 @@
 						<td>${nthBoardInfo.pubDate}</td>
 						<td>${nthBoardInfo.views}</td>
 						<td>${nthBoardInfo.likes}</td>
+						<c:if test="${loginUserInfo.id eq 'admin'}">
+							<td>
+								<button type="button" class="boardDeletebtn btn btn-danger" value="${nthBoardInfo.boardIdx}">삭제</button>
+							</td>
+						</c:if>
 					</tr>
 				</c:forEach>
 
@@ -86,8 +95,10 @@
 		</nav>
 		
 		<div id="boardBottombtn">
-				<c:if test="${loginUserInfo ne null}">
-					<button class="boardWritebtn" type="button" style="float:right;">글쓰기</button>
+				<c:if test="${(loginUserInfo ne null)}">
+					<c:if test="${(category ne 'notice') || (loginUserInfo.id eq 'admin')}">	
+						<button class="boardWritebtn" type="button" style="float:right;">글쓰기</button>
+					</c:if>
 				</c:if>
 		</div>
 	</div>
@@ -124,6 +135,29 @@
 		$(".boardWritebtn").on("click",function(){
 			location.href="/worldcup/board/write.jsp?category=${category}";
 		});
+		
+		
+		let parameters = location.search;
+		parameters = parameters.substr(1, parameters.length);
+		parameters = parameters.split("=");
+		let category = parameters[1];
+		if(category == undefined){
+			category = "notice";
+		}
+		$("button[class^=\"boardDeletebtn\"]").on("click",function(){
+ 			$.ajax({
+ 				url : "/worldcup/board/delete?category="+category+"&"+category+"Idx="+$(this).val(),
+ 				type : "POST",
+ 				success : function(amount) {
+					alert("공지사항이 삭제되었습니다!");
+					 location.reload();
+ 				},
+ 				error : function(error) {
+ 					console.log(error);
+ 				}
+ 			});
+		});
+		
 		
 	</script>
 </body>

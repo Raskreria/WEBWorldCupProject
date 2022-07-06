@@ -30,37 +30,35 @@
 </head>
 <body>
 	<div>
-		<span>
-			<button id="leftElement" type="button">요소1	</button>
-		</span>
-		<span>
-			<button id="rightElement" type="button">요소2	</button>
-		</span>
+		<h1>월드컵 게임 16강</h1>
 	</div>
+	
 	<span>
 <!-- 	 	왼쪽 요소 -->
 		<span class="card shadow-sm col-6" style="float: left;">
-					<img alt="" src="https://via.placeholder.com/300x180.jpg/" width="100%"
-					height="225" id="leftElement">
-					
-					<text>Thumbnail</text>
+					<button type="button" id="leftElement">
+						<img alt="" src="https://via.placeholder.com/300x180.jpg/" width="100%"
+							height="225">
+					</button>
+					Thumbnail
 	
-				<div class="card-body">
-					<p id="leftElementTitle" class="card-text">요소 타이틀 올자리</p>
-					<div class="d-flex justify-content-between align-items-center">
-						<div class="btn-group">
-							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+					<div class="card-body">
+						<p id="leftElementTitle" class="card-text">요소 타이틀 올자리</p>
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+								<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+							</div>
 						</div>
 					</div>
-				</div>
 		</span>
 <!-- 		오른쪽  요소 -->
 		<span class="card shadow-sm col-6" style="displat: inline-block;">
-					<img alt="" src="https://via.placeholder.com/300x180.jpg/" width="100%"
-					height="225" id="rightElement">
-				
-				<text>Thumbnail</text>
+				<button type="button" id="rightElement">
+				<img alt="" src="https://via.placeholder.com/300x180.jpg/" width="100%"
+					height="225">
+				</button>
+				Thumbnail
 				
 				<div class="card-body">
 					<p id="rightElementTitle" class="card-text">요소 타이틀 올자리</p>
