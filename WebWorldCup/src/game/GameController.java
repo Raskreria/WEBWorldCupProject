@@ -1,6 +1,7 @@
 package game;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ElementInfoDao;
+import service.ElementService;
 import vo.ElementInfo;
 // test required
 @WebServlet("/game/playdata")
@@ -20,15 +22,15 @@ public class GameController extends HttpServlet {
 		//1. 파라미터 받아오기
 		int gameIdx = Integer.parseInt(request.getParameter("gameIdx"));
 		
-		//2. db에서 게임진행에 필요한 데이터를 받아 List로 구성하기	
-		ElementInfoDao dao = new ElementInfoDao();
-		List<ElementInfo> elementInfoList = dao.selectElementsByGameIdx(gameIdx);
+		ElementService service = new ElementService();
+		String data = service.loadElementInfoToJson(gameIdx);
 		
-		
-		//3. JSP에서 사용하기 위해 객체로 저장.
-		request.setAttribute("elementInfoList", elementInfoList);
-		RequestDispatcher rd = request.getRequestDispatcher("/game/play.jsp");
-		rd.forward(request, response);
+		System.out.println(data);
+		response.setContentType("text/plain;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(data);
+		out.close();
+
 	}
 
 }

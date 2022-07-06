@@ -23,37 +23,97 @@
 <!-- URLs.js -->
 <script src="../js/URLs.js"></script>
 
+
+<!-- 	play.css -->
+<link rel="stylesheet" href="../css/play.css">
+
 </head>
 <body>
+	<div>
+		<span>
+			<button id="leftElement" type="button">요소1	</button>
+		</span>
+		<span>
+			<button id="rightElement" type="button">요소2	</button>
+		</span>
+	</div>
 	<span>
-		<button id="leftElement" type="button">요소1	</button>
-	</span>
-	<span>
-		<button id="rightElement" type="button">요소2	</button>
-	</span>
+<!-- 	 	왼쪽 요소 -->
+		<span class="card shadow-sm col-6" style="float: left;">
+					<img alt="" src="https://via.placeholder.com/300x180.jpg/" width="100%"
+					height="225" id="leftElement">
+					
+					<text>Thumbnail</text>
 	
-	
-	<c:forEach items="${elementInfoList}" var="nthElementInfo">
+				<div class="card-body">
+					<p id="leftElementTitle" class="card-text">요소 타이틀 올자리</p>
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+						</div>
+					</div>
+				</div>
+		</span>
+<!-- 		오른쪽  요소 -->
+		<span class="card shadow-sm col-6" style="displat: inline-block;">
+					<img alt="" src="https://via.placeholder.com/300x180.jpg/" width="100%"
+					height="225" id="rightElement">
+				
+				<text>Thumbnail</text>
+				
+				<div class="card-body">
+					<p id="rightElementTitle" class="card-text">요소 타이틀 올자리</p>
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+						</div>
+					</div>
+				</div>
+		</span>
+		
+	</span>
+	<div class="shuffleWrapper">
+		<button id="sufflebtn" type="button" class="btn btn-danger">셔플</button>
+	</div>
+	<%-- 	<c:forEach items="${elementInfoList}" var="nthElementInfo"> --%>
 <%-- 	<p> ${nthElementInfo.elementIdx} </p>  --%>
 <%-- 	<p> ${nthElementInfo.elementTitle} <p> --%>
 <%-- 	<p> ${nthElementInfo.elementImg} <p>  --%>
 <!-- 	<br/> -->
-
-	</c:forEach>
+<%-- 	</c:forEach> --%>
 	
 	
 	<!-- 제이쿼리 -->
 	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-	let elementList = new Array(16);
-	console.log('elementList의 길이 : ' + elementList.length);
+	let elementInfoList;
+	//게임 플레이 데이터를 ajax로 가져오기
+	$.ajax({
+		url : "/worldcup/game/playdata",
+		type : "GET",
+		data : "gameIdx=1",
+		success : function(result) {
+// 			alert("게임 플레이 데이터 불러오기 성공");
+			result = JSON.parse(result);
+			elementInfoList = result.elementInfoList;
+			$("#leftElementTitle").text(elementInfoList[0].elementTitle);
+			$("#rightElementTitle").text(elementInfoList[1].elementTitle);
+			
+			//순서도 제대로 잘 저장이 됨.
+		},
+		error : function(result) {
+			alert("게임 플레이 데이터 불러오기 실패");
+		}
+	});
 	
-	for(var idx in elementList){
-		elementList.push(${elementInfoList})
-	}
-	console.log('elementList의 길이 : ' + elementList.length);
-	console.log(elementList);
-	
+// 	for(let i=0; i<elementInfoList.length; i++) {
+// 		let elementInfo = elementInfoList[i];
+		
+// 		alert(elementInfo.elementIdx+" "+(i+1));
+// 	}
+
 	
 	
 	$("#leftElement").on("click",function(){
