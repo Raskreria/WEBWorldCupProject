@@ -173,7 +173,7 @@
 	</section>
 <!-- 제이쿼리 -->
 <script src="/worldcup/js/jquery-3.6.0.min.js"></script>
-	<script src="/worldcup/js/URLs.js"></script>
+	<script src="../js/URLs.js"></script>
 	<script type="text/javascript">
 		//스크롤 내리면 추가 게임썸네일
 		let loadNumber = 1;
@@ -194,7 +194,7 @@
 						loadNumber++;
 						//same with under ajax
 						$.ajax({
-							url : MAIN_THUMBNAIL_SEVLET+"?loadNumber="+loadNumber+"&sortingMethod="+sortingMethod,
+							url : MAIN_THUMBNAIL_SERVLET+"?loadNumber="+loadNumber+"&sortingMethod="+sortingMethod,
 							type : "GET",
 							success : function(result) {
 								
@@ -226,7 +226,7 @@
 
 							},
 							error : function(error) {
-								console.log(error);
+								alert("에러발생");
 							}
 						});
 					}
@@ -242,7 +242,7 @@
 			
 			//same with above ajax
 			$.ajax({
-				url : MAIN_THUMBNAIL_SEVLET+"?loadNumber="+loadNumber+"&sortingMethod="+sortingMethod,
+				url : MAIN_THUMBNAIL_SERVLET+"?loadNumber="+loadNumber+"&sortingMethod="+sortingMethod,
 				type : "GET",
 				success : function(result) {
 					
@@ -291,7 +291,7 @@
 			
 			//same with above ajax
 			$.ajax({
-				url : MAIN_SEARCH_SEVLET+"?gameTitle="+gameTitle,
+				url : MAIN_SEARCH_SERVLET+"?gameTitle="+gameTitle,
 				type : "GET",
 				success : function(result) {
 					

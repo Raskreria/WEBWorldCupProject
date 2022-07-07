@@ -110,4 +110,40 @@ public class ElementInfoDao {
 			db.closeConnection(conn);
 		}
 	}
+	
+	public List<ElementInfo> selectElementsRankByGameIdx(int gameIdx,int pageNumber, String sortingMethod, String order) {
+		Database db = new Database();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		List<ElementInfo> elementInfoList = new ArrayList<>();
+
+		try {
+			
+			String sql = "SELECT * from ElementInfo WHERE gameIdx =" + gameIdx + " ORDER BY sortingMethod order LIMIT ?, 10";
+			sql= sql.replace("sortingMethod", sortingMethod);
+			sql= sql.replace("order", order);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (pageNumber - 1) * 10);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int elementIdx = rs.getInt("elementIdx");
+				String elementTitle = rs.getString("elementTitle");
+				String elementImg = rs.getString("elementImg");
+				int elementWinCount = rs.getInt("elementWinCount");
+				int elementSelectCount = rs.getInt("elementSelectCount");
+				
+				ElementInfo nthElementInfo = new ElementInfo(gameIdx, elementIdx, elementSelectCount, elementWinCount, elementTitle, elementImg);
+
+				elementInfoList.add(nthElementInfo);
+			}
+			return elementInfoList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return elementInfoList;
+	}
 }

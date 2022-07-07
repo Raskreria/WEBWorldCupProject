@@ -54,13 +54,13 @@ CREATE TABLE IF NOT EXISTS `communityinfo` (
   CONSTRAINT `FK_communityinfo_memberinfo` FOREIGN KEY (`memberIdx`) REFERENCES `memberinfo` (`memberIdx`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT='커뮤니티 정보 테이블';
 
--- 테이블 데이터 worldcupgame.communityinfo:~3 rows (대략적) 내보내기
+-- 테이블 데이터 worldcupgame.communityinfo:~4 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `communityinfo` DISABLE KEYS */;
 REPLACE INTO `communityinfo` (`communityIdx`, `memberIdx`, `communityTitle`, `communityContents`, `file`, `pubDate`, `views`, `likes`) VALUES
-	(1, 2, '커뮤니티1', '커뮤니티내용1', NULL, '2022-07-05 22:36:20', 7, 1),
-	(2, 3, '커뮤니티2', '커뮤니티내용2', NULL, '2022-07-05 22:38:33', 6, 1),
+	(1, 2, '커뮤니티1', '커뮤니티내용1', NULL, '2022-07-05 22:36:20', 8, 1),
+	(2, 3, '커뮤니티2', '커뮤니티내용2', NULL, '2022-07-05 22:38:33', 7, 1),
 	(3, 1, '커뮤니티에도 글쓴다', '잘써지지?', NULL, '2022-07-06 04:57:45', 5, 0),
-	(4, 2, '커뮤니티 글쓰기 재시도', '잘 써지는거지? 혹시 엔터는 안되니?\r\n\r\n??', NULL, '2022-07-07 05:49:10', 5, 2);
+	(4, 2, '커뮤니티 글쓰기 재시도', '잘 써지는거지? 혹시 엔터는 안되니?\r\n\r\n??', NULL, '2022-07-07 05:49:10', 7, 2);
 /*!40000 ALTER TABLE `communityinfo` ENABLE KEYS */;
 
 -- 테이블 worldcupgame.elementinfo 구조 내보내기
@@ -79,23 +79,23 @@ CREATE TABLE IF NOT EXISTS `elementinfo` (
 -- 테이블 데이터 worldcupgame.elementinfo:~17 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `elementinfo` DISABLE KEYS */;
 REPLACE INTO `elementinfo` (`gameIdx`, `elementIdx`, `elementSelectCount`, `elementWinCount`, `elementTitle`, `elementImg`) VALUES
-	(1, 1, 0, 0, '포메라니안', '포메라니안이미지'),
-	(1, 2, 1, 0, '비숑', '비숑이미지'),
-	(1, 3, 0, 0, '비글', '비글이미지'),
-	(1, 4, 2, 0, '푸들', '푸들이미지'),
-	(1, 5, 0, 0, '시베리안 허스키', '시베리안 허스키이미지'),
-	(1, 6, 1, 0, '골든리트리버', '골든리트리버이미지'),
-	(1, 7, 0, 0, '말티즈', '말티즈이미지'),
-	(1, 8, 3, 0, '퍼그', '퍼그이미지'),
-	(1, 9, 0, 0, '닥스훈트', '닥스훈트이미지'),
-	(1, 10, 1, 0, '진돗개', '진돗개이미지'),
-	(1, 11, 0, 0, '말라뮤트', '말라뮤트이미지'),
-	(1, 12, 2, 0, '보더콜리', '보더콜리이미지'),
-	(1, 13, 0, 0, '시츄', '시츄이미지'),
-	(1, 14, 1, 0, '시바견', '시바견이미지'),
-	(1, 15, 0, 0, '그레이 하운드', '그레이 하운드이미지'),
-	(1, 16, 4, 1, '셰퍼드', '셰퍼드이미지'),
-	(1, 17, 0, 0, '회색푸들', 'file/game/element/강아지월드컵.jpg');
+	(1, 1, 0, 0, '포메라니안', 'file/game/element/포메라니안.jpg'),
+	(1, 2, 1, 0, '비숑', 'file/game/element/비숑.jpg'),
+	(1, 3, 0, 0, '비글', 'file/game/element/비글.jpg'),
+	(1, 4, 2, 0, '푸들', 'file/game/element/푸들.jpg'),
+	(1, 5, 0, 0, '시베리안 허스키', 'file/game/element/시베리안 허스키.jpg'),
+	(1, 6, 1, 0, '골든리트리버', 'file/game/element/골든리트리버.jpg'),
+	(1, 7, 0, 0, '말티즈', 'file/game/element/말티즈.jpg'),
+	(1, 8, 3, 0, '퍼그', 'file/game/element/퍼그.jpg'),
+	(1, 9, 0, 0, '닥스훈트', 'file/game/element/닥스훈트.jpg'),
+	(1, 10, 1, 0, '진돗개', 'file/game/element/진돗개.jpg'),
+	(1, 11, 0, 0, '말라뮤트', 'file/game/element/말라뮤트.jpg'),
+	(1, 12, 2, 0, '보더콜리', 'file/game/element/보더콜리.jpg'),
+	(1, 13, 0, 0, '시츄', 'file/game/element/시츄.jpg'),
+	(1, 14, 1, 0, '시바견', 'file/game/element/시바견.jpg'),
+	(1, 15, 0, 0, '그레이 하운드', 'file/game/element/그레이 하운드.jpg'),
+	(1, 16, 4, 1, '셰퍼드', 'file/game/element/셰퍼드.jpg'),
+	(1, 17, 0, 0, '회색푸들', 'file/game/element/회색푸들.jpg');
 /*!40000 ALTER TABLE `elementinfo` ENABLE KEYS */;
 
 -- 테이블 worldcupgame.gameinfo 구조 내보내기
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `gameinfo` (
   PRIMARY KEY (`gameIdx`) USING BTREE,
   KEY `FK_gamesinfo_memberinfo` (`regMemberIdx`),
   CONSTRAINT `FK_gamesinfo_memberinfo` FOREIGN KEY (`regMemberIdx`) REFERENCES `memberinfo` (`memberIdx`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COMMENT='게임 썸네일 정보 테이블';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3 COMMENT='게임 썸네일 정보 테이블';
 
 -- 테이블 데이터 worldcupgame.gameinfo:~12 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `gameinfo` DISABLE KEYS */;
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `noticeinfo` (
 -- 테이블 데이터 worldcupgame.noticeinfo:~26 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `noticeinfo` DISABLE KEYS */;
 REPLACE INTO `noticeinfo` (`noticeIdx`, `memberIdx`, `noticeTitle`, `noticeContents`, `file`, `pubDate`, `views`, `likes`) VALUES
-	(1, 1, '첫번째 공지사항', '공지사항1', NULL, '2022-06-12 23:53:18', 2, 1),
+	(1, 1, '첫번째 공지사항', '공지사항1', NULL, '2022-06-12 23:53:18', 3, 1),
 	(2, 1, '공지사항1', '공지사항1 내', '/file/board/20220616개발진행도.txt', '2022-06-24 01:24:19', 2, 0),
 	(3, 1, '공지사항2', '공지사항2 내용', NULL, '2022-07-02 19:28:12', 0, 0),
 	(4, 1, '공지사항2', '공지사항2 내용', NULL, '2022-07-02 19:28:28', 0, 0),
@@ -190,9 +190,9 @@ REPLACE INTO `noticeinfo` (`noticeIdx`, `memberIdx`, `noticeTitle`, `noticeConte
 	(21, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵17.jpg', '2022-07-02 19:34:55', 7, 0),
 	(22, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵18.jpg', '2022-07-02 19:34:57', 2, 1),
 	(23, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵19.jpg', '2022-07-02 19:34:58', 6, 0),
-	(24, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵20.jpg', '2022-07-02 19:34:59', 0, 0),
-	(28, 3, 'LastNotice', '마지막 공지사항', NULL, '2022-07-06 03:56:25', 5, 0),
-	(30, 1, '공지사항 글쓴다', '공지사항이다', 'file/board/고양이2.png', '2022-07-06 04:55:41', 4, 1);
+	(24, 1, '공지사항', '공지사항 내용', '/file/board/카페월드컵20.jpg', '2022-07-02 19:34:59', 1, 1),
+	(28, 3, 'LastNotice', '마지막 공지사항', NULL, '2022-07-06 03:56:25', 8, 0),
+	(30, 1, '공지사항 글쓴다', '공지사항이다', 'file/board/고양이2.png', '2022-07-06 04:55:41', 8, 1);
 /*!40000 ALTER TABLE `noticeinfo` ENABLE KEYS */;
 
 -- 테이블 worldcupgame.recordinfo 구조 내보내기

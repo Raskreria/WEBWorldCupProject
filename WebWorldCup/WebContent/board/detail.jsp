@@ -43,7 +43,7 @@
 		
 		<div class="container col-8" id="boardRead">
 			<div id="boardTopbtn">
-				<c:if test="${boardInfo.memberIdx eq loginUserInfo.idx}">
+				<c:if test="${(boardInfo.memberIdx eq loginUserInfo.idx) || (loginUserInfo.id eq 'admin')}">
 					<button class="boardUpdatebtn" type="button" >수정</button>
 					<button class="boardDeletebtn" type="button" >삭제</button>
 				</c:if>

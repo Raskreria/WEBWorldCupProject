@@ -14,6 +14,15 @@ public class ElementInfo {
 		this.elementImg = elementImg;
 	}
 	
+	public ElementInfo(int gameIdx, int elementIdx, int elementSelectCount, int elementWinCount, String elementTitle,
+			String elementImg) {
+		this.gameIdx = gameIdx;
+		this.elementIdx = elementIdx;
+		this.elementSelectCount = elementSelectCount;
+		this.elementWinCount = elementWinCount;
+		this.elementTitle = elementTitle;
+		this.elementImg = elementImg;
+	}
 	
 	public ElementInfo() {
 	}
