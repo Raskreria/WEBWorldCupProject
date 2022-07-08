@@ -23,6 +23,12 @@
 	
 <!-- URLs.js -->
 <script src="../js/URLs.js"></script>
+<!-- parameter_function.js -->
+<script src="../js/parameter_function.js"></script>
+
+
+<!-- ranking css -->
+<link rel="stylesheet" href="../css/ranking.css">
 
 </head>
 <body>
@@ -42,11 +48,11 @@
 		<table class="table table-warning table-striped">
 			<thead>
 				<tr>
-					<th scope="col">순위</th>
-					<th scope="col">이미지</th>
-					<th scope="col">이름</th>
-					<th scope="col">우승 비율</th>
-					<th scope="col">승률</th>
+					<th class="col-1" scope="col">순위</th>
+					<th class="col-2" scope="col">이미지</th>
+					<th class="col-1" scope="col">이름</th>
+					<th class="col-2" scope="col">우승 비율</th>
+					<th class="col-2" scope="col">승률</th>
 				</tr>
 			</thead>
 			<tbody id="elementRankingList">
@@ -54,13 +60,41 @@
 			</tbody>
 		</table>
 	</div>
-	<img src="file/game/element/셰퍼드.jpg" class="d-block w-100" alt="...">
-		<!-- 제이쿼리 -->
+<!-- 	페이지네이션 -->
+	<nav aria-label="Page navigation example">
+		<ul id="pagenation" class="pagination justify-content-center">
+			<li class="page-item disabled"><a class="page-link">Previous</a></li>
+			
+			
+			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+		</ul>
+	</nav>
+	
+	<!-- 제이쿼리 -->
 	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
+	let sortingMethod = "elementWinCount";
+	let order = "DESC";	
+	let gameIdx = 1;
+	let pageNumber = 1;
+	
+	if(getParameter("sortingMethod") != undefined){
+		sortingMethod = getParameter("sortingMethod");
+	};
+	if(getParameter("order") != undefined){
+		order = getParameter("order");
+	};
+	if(getParameter("gameIdx") != undefined){
+		gameIdx = getParameter("gameIdx");
+	};
+	if(getParameter("pageNumber") != undefined){
+		pageNumber = getParameter("pageNumber");
+	};
+	
+	
 	let elementInfoList;
 	$.ajax({
-		url : ELEMENT_RANKING_SERVLET+"?gameIdx=1",
+		url : ELEMENT_RANKING_SERVLET+"?gameIdx="+gameIdx+"&pageNumber="+pageNumber+"&sortingMethod"+sortingMethod+"&order="+order,
 		type : "GET",
 		success : function(result) {
 			result = JSON.parse(result);
@@ -72,12 +106,37 @@
 			for(var i = 0 ; i<elementInfoList.length; i++ ){
 				$("#elementRankingList").append("<tr>"
 						+"<th scope=\"row\">"+(i+1)+"</th>"
-						+"<td><img src=\""+elementInfoList[i].elementImg+"\""
-						+"class=\"d-block w-100\" alt=\"...\"></td>"
+						+"<td><img src=\"../"+elementInfoList[i].elementImg+"\""
+						+"class=\"d-block img-thumbnail\" width=\"150px\" alt=\"...\"></td>"
 						+"<td>"+elementInfoList[i].elementTitle+"</td>"
 						+"<td>"+elementInfoList[i].elementWinCount+"</td>"
 						+"<td>"+elementInfoList[i].elementSelectCount+"</td>"
 					+"</tr>");
+			}
+
+
+		},
+		error : function(error) {
+			console.log(error);
+		}
+	});
+	
+	// 공지사항 목록의 페이지네이션을 구성할 ajax
+	// ajax가 공지사항의 전체 개수를 받아와서
+	// 전체 개수를 사용해서 적절히 페이지네이션을 출력
+	$.ajax({
+		url : ELEMENT_AMOUNT_SERVLET+"?gameIdx=1",
+		type : "GET",
+		success : function(amount) {
+			let roofCount = Math.ceil(amount / 10);
+
+			for (let i = 1; i <= roofCount; i++) {
+				// 페이지네이션 출력
+				$("#pagenation li:last-child").before("<li id=\"page-"+i+"\"class=\"page-item\">"
+								+"<a class=\"page-link\" href=\""+ELEMENT_RANKING_PAGE+"?gameIdx="+gameIdx+"&pageNumber="+i+"&sortingMethod"+sortingMethod+"&order="+order+"\" >"
+										+i+"</a></li>"
+				
+				);
 			}
 
 

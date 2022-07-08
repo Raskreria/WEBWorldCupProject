@@ -29,7 +29,7 @@ public class ElementRankingListController extends HttpServlet {
 
 		String order = "DESC";
 		if(request.getParameter("order") != null) {
-			sortingMethod = request.getParameter("order");
+			order = request.getParameter("order");
 		}
 		
 		ElementService service = new ElementService();

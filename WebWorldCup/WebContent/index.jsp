@@ -149,7 +149,7 @@
 								<img src="${nthGameInfo.gameImg}"
 									class="d-block w-100" alt="...">
 								<div class="card-body">
-									<!-- 게임 제목 -->
+									게임 제목
 									<p class="card-text">${nthGameInfo.gameTitle}</p>
 									
 									<div class="d-flex justify-content-between align-items-center">
@@ -173,7 +173,7 @@
 	</section>
 <!-- 제이쿼리 -->
 <script src="/worldcup/js/jquery-3.6.0.min.js"></script>
-	<script src="../js/URLs.js"></script>
+	<script src="/worldcup/js/URLs.js"></script>
 	<script type="text/javascript">
 		//스크롤 내리면 추가 게임썸네일
 		let loadNumber = 1;
@@ -300,6 +300,7 @@
 					if(result==null){
 						return;
 					}
+					loadNumber++;
 					gameInfoList = result.gameInfoList;
 					
 					for(var i = 0 ; i<gameInfoList.length; i++ ){
@@ -323,7 +324,7 @@
 					
 					//이걸 안해주면 스크롤시 썸네일 불러오는 ajax가 게임검색과 관계없는 썸네일을 불러옴.
 					//그렇다고 해당 이벤트를 삭제하자니 검색 후에 다시 정렬방식을 선택하면 스크롤시 추가 썸네일을 불러올 수 없음.
-					loadNumber=10;
+				
 
 				},
 				error : function(error) {

@@ -146,4 +146,35 @@ public class ElementInfoDao {
 		}
 		return elementInfoList;
 	}
+	
+	
+	public int getAmountOfElementByGameIdx(int gameIdx) {
+		Database db = new Database();
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int amount = 0;
+
+		try {
+			String sql = "SELECT COUNT(*) AS amount FROM elementInfo WHERE gameIdx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gameIdx);
+
+			rs = pstmt.executeQuery();
+
+			rs.next();
+
+			amount = rs.getInt("amount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closeResultSet(rs);
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+
+		return amount;
+	}
 }
