@@ -1,6 +1,7 @@
 package game;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,22 +33,25 @@ public class AddGameElementController extends HttpServlet {
 		String elementTitle = multi.getParameter("elementTitle");
 
 		//2. 파일경로 가공
-		String fileSystemName = multi.getFilesystemName("file");
+		String fileSystemName = multi.getFilesystemName("elementImg");
 		String filePath = null;
 		if(fileSystemName != null) {
 			filePath = "file/game/element/" + fileSystemName;
 		}
 
 
-		ElementInfo element = new ElementInfo();
-		element.setGameIdx(gameIdx);
-		element.setElementTitle(elementTitle);
-		element.setElementImg(filePath);
+		ElementInfo elementInfo = new ElementInfo();
+		elementInfo.setGameIdx(gameIdx);
+		elementInfo.setElementTitle(elementTitle);
+		elementInfo.setElementImg(filePath);
 		
 		//3. 파일경로 db저장
 		ElementInfoDao dao = new ElementInfoDao();
-		dao.insertElementInfo(element);
+		dao.insertElementInfo(elementInfo);
+		elementInfo = dao.selectThisElementInfo(elementInfo);
 		
+		PrintWriter out = response.getWriter();
+		out.print(elementInfo.getElementIdx());
 
 
 	}

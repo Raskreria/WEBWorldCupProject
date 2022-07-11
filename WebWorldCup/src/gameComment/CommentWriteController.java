@@ -17,21 +17,16 @@ public class CommentWriteController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		if(request.getParameter("gameIdx") == null) {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		}
-		int memberIdx=0;
-		if(request.getParameter("memberIdx") !=null)
-			memberIdx = Integer.parseInt(request.getParameter("memberIdx"));
-		int gameIdx = Integer.parseInt(request.getParameter("gameIdx"));
+		String category = request.getParameter("category");
+		int categoryIdx = Integer.parseInt(request.getParameter(category+"Idx"));
+		int memberIdx = Integer.parseInt(request.getParameter("memberIdx"));
 		String name = request.getParameter("name");
 		String comment = request.getParameter("comment");
 		LocalDateTime commentDate = LocalDateTime.now();
 		
 		//파라미터 검증 생략
 		
-		CommentInfo commentInfo = new CommentInfo(gameIdx,name,comment,commentDate,memberIdx);
+		CommentInfo commentInfo = new CommentInfo(category, categoryIdx, memberIdx, name, comment, commentDate);
 		CommentInfoDao dao = new CommentInfoDao();
 		boolean result = dao.insertCommentInfo(commentInfo);
 		if(result) {

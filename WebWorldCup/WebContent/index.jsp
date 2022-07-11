@@ -25,6 +25,9 @@
 
 <!-- nav css -->
 <link rel="stylesheet" href="/worldcup/css/nav.css">
+
+<!-- index css -->
+<link rel="stylesheet" href="/worldcup/css/index.css">
 <!-- URLs.js -->
 <script src="../js/URLs.js"></script>
 </head>
@@ -146,10 +149,12 @@
 					
 						<div class="col-xs-6 col-sm-3 col-lg-2.4">
 							<div class="card shadow-sm">
-								<img src="${nthGameInfo.gameImg}"
-									class="d-block w-100" alt="...">
+								<div class="imgBox">
+									<img src="${nthGameInfo.gameImg}"
+										class="d-block w-100" alt="...">
+								</div>
 								<div class="card-body">
-									게임 제목
+									jsp로 불러온 친구들
 									<p class="card-text">${nthGameInfo.gameTitle}</p>
 									
 									<div class="d-flex justify-content-between align-items-center">
@@ -208,9 +213,11 @@
 								for(var i = 0 ; i<gameInfoList.length; i++ ){
 									$("#thumbnailList").append("<div class=\"col-xs-6 col-sm-3 col-lg-2.4\">"
 																	+"<div class=\"card shadow-sm\">"
+																	+"<div class=\"imgBox\">"
 																		+"<img src=\""+gameInfoList[i].gameImg+"\" "
 																			+"class=\"d-block w-100\" alt=\"...\">"
-																		+"<div class=\"card-body\">"
+																			+"</div>"
+																		+"<div class=\"card-body\">스크롤로 불러온 친구들"
 																			+"<p class=\"card-text\">"+gameInfoList[i].gameTitle+"</p>"
 																			+"<div class=\"d-flex justify-content-between align-items-center\">"
 																				+"<div class=\"btn-group\">"
@@ -258,7 +265,7 @@
 														+"<div class=\"card shadow-sm\">"
 															+"<img src=\""+gameInfoList[i].gameImg+"\" "
 																+"class=\"d-block w-100\" alt=\"...\">"
-															+"<div class=\"card-body\">"
+															+"<div class=\"card-body\">정렬방식으로 ajax"
 																+"<p class=\"card-text\">"+gameInfoList[i].gameTitle+"</p>"
 																+"<div class=\"d-flex justify-content-between align-items-center\">"
 																	+"<div class=\"btn-group\">"
@@ -308,7 +315,7 @@
 														+"<div class=\"card shadow-sm\">"
 															+"<img src=\""+gameInfoList[i].gameImg+"\" "
 																+"class=\"d-block w-100\" alt=\"...\">"
-															+"<div class=\"card-body\">"
+															+"<div class=\"card-body\">검색으로나온친구들"
 																+"<p class=\"card-text\">"+gameInfoList[i].gameTitle+"</p>"
 																+"<div class=\"d-flex justify-content-between align-items-center\">"
 																	+"<div class=\"btn-group\">"

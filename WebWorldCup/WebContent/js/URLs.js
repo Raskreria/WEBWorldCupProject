@@ -16,9 +16,13 @@ let MEMBERINFO_UPDATE_SERVLET = "/worldcup/member/update";
 
 let Board_LIST_SERVLET = "/worldcup/board/list";
 
-let ELEMENT_RANKING_SERVLET = "/worldcup/game/ranking"
+let ELEMENT_RANKING_SERVLET = "/worldcup/game/ranking";
 
 let ELEMENT_AMOUNT_SERVLET = "/worldcup/element/amount";
 
 
 let ELEMENT_RANKING_PAGE = "/worldcup/game/ranking.jsp"
+
+let COMMENT_LIST_SERVLET = "/worldcup/comment/list";
+
+let GAME_ELEMENT_ADD_SERVLET ="/worldcup/game/addelement";

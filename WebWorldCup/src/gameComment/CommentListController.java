@@ -1,44 +1,35 @@
 package gameComment;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CommentInfoDao;
-import vo.CommentInfo;
+import service.CommentService;
 
 @WebServlet("/comment/list")
 public class CommentListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("gameIdx") == null) {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		}
-		int loadNumber = 1;
-		if(request.getParameter("loadCount") != null) {
-			loadNumber = Integer.parseInt(request.getParameter("loadCount"));
-		}
-
-		int gameIdx = Integer.parseInt(request.getParameter("gameIdx"));
+		request.setCharacterEncoding("UTF-8");
+		String category = request.getParameter("category");
+		int categoryIdx = Integer.parseInt(request.getParameter(category+"Idx"));
+		int loadNumber = Integer.parseInt(request.getParameter("loadNumber"));
 		
-		CommentInfoDao dao = new CommentInfoDao();
-		List<CommentInfo> commentInfoList = dao.selectCommentsByGameIdx(gameIdx, loadNumber);
 		
-	
+		CommentService service = new CommentService();
 		
-		request.setAttribute("commentInfoList", commentInfoList);
-		RequestDispatcher rd = request.getRequestDispatcher("/worldcup/index.jsp");
-		rd.forward(request, response);	
+		String data = service.loadCommentInfoToJson(category, categoryIdx, loadNumber);
 		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(data);
+		response.setContentType("text/plain;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(data);
+		out.close();
+		
 	}
 
 }

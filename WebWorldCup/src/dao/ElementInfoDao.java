@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,7 +111,31 @@ public class ElementInfoDao {
 			db.closeConnection(conn);
 		}
 	}
-	
+	//요소등록 후에 요소 idx를 jsp에 전달해주기 위한 메서드
+	public ElementInfo selectThisElementInfo(ElementInfo elementInfo) {
+			Database db = new Database();
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			
+			String sql = "SELECT * FROM ElementInfo WHERE gameIdx=? AND elementTitle=? ";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, elementInfo.getGameIdx());
+				pstmt.setString(2, elementInfo.getElementTitle());
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				int elementIdx = rs.getInt("elementIdx");
+				elementInfo.setElementIdx(elementIdx);
+					
+				return elementInfo;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				db.closePstmt(pstmt);
+				db.closeConnection(conn);
+			}
+			return elementInfo;
+	}
 	public List<ElementInfo> selectElementsRankByGameIdx(int gameIdx,int pageNumber, String sortingMethod, String order) {
 		Database db = new Database();
 		Connection conn = db.getConnection();

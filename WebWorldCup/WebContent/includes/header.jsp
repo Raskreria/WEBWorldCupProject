@@ -33,7 +33,7 @@
 							<b>게시판</b>
 						</button>
 				</a></li>
-				<li><a href="#">
+				<li><a href="${GAME_MAKE_PAGE}">
 						<button type="button" class="btn btn-outline-light"
 							style="border: 0px">
 							<b>게임 만들기</b>

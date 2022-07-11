@@ -94,7 +94,7 @@
 	
 	let elementInfoList;
 	$.ajax({
-		url : ELEMENT_RANKING_SERVLET+"?gameIdx="+gameIdx+"&pageNumber="+pageNumber+"&sortingMethod"+sortingMethod+"&order="+order,
+		url : ELEMENT_RANKING_SERVLET+"?gameIdx="+gameIdx+"&pageNumber="+pageNumber+"&sortingMethod="+sortingMethod+"&order="+order,
 		type : "GET",
 		success : function(result) {
 			result = JSON.parse(result);
@@ -133,7 +133,7 @@
 			for (let i = 1; i <= roofCount; i++) {
 				// 페이지네이션 출력
 				$("#pagenation li:last-child").before("<li id=\"page-"+i+"\"class=\"page-item\">"
-								+"<a class=\"page-link\" href=\""+ELEMENT_RANKING_PAGE+"?gameIdx="+gameIdx+"&pageNumber="+i+"&sortingMethod"+sortingMethod+"&order="+order+"\" >"
+								+"<a class=\"page-link\" href=\""+ELEMENT_RANKING_PAGE+"?gameIdx="+gameIdx+"&pageNumber="+i+"&sortingMethod="+sortingMethod+"&order="+order+"\" >"
 										+i+"</a></li>"
 				
 				);

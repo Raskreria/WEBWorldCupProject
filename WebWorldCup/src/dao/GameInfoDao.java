@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import util.Database;
-import vo.BoardInfo;
 import vo.GameInfo;
 
 public class GameInfoDao {
@@ -42,6 +42,33 @@ public class GameInfoDao {
 			db.closePstmt(pstmt);
 			db.closeConnection(conn);
 		}
+	}
+	//썸네일 등록 후에 이동할 요소등록페이지에 gameIdx도 포함시킨 gameInfo를 요청정보로 저장하기위한 메서드.
+	public GameInfo selectThisGameInfo(GameInfo gameInfo) {
+		Database db = new Database();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "SELECT * FROM GameInfo WHERE gameTitle=? AND regDate=? ";
+		String regDate = gameInfo.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		System.out.println(regDate +"변환결과입니다.");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gameInfo.getGameTitle());
+			pstmt.setString(2, regDate);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			int gameIdx = rs.getInt("gameIdx");
+			gameInfo.setGameIdx(gameIdx);
+				
+			return gameInfo;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return gameInfo;
 	}
 	public List<GameInfo> selectGameInfo(int loadNumber, String sortingMethod){
 		Database db = new Database();

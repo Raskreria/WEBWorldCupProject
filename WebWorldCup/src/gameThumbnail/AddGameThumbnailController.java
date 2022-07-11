@@ -3,6 +3,7 @@ package gameThumbnail;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ public class AddGameThumbnailController extends HttpServlet {
 		LocalDateTime regDate = LocalDateTime.now();
 		
 		//2. 파일경로 가공
-		String fileSystemName = multi.getFilesystemName("file");
+		String fileSystemName = multi.getFilesystemName("gameImg");
 		String filePath = null;
 		if(fileSystemName != null) {
 			filePath = "file/game/thumbnail/" + fileSystemName;
@@ -42,7 +43,11 @@ public class AddGameThumbnailController extends HttpServlet {
 		//3. 파일경로 db저장
 		GameInfoDao dao = new GameInfoDao();
 		dao.insertGameInfo(gameInfo);
+		gameInfo = dao.selectThisGameInfo(gameInfo);
+		request.setAttribute("gameInfo", gameInfo);
 		
+		RequestDispatcher rd = request.getRequestDispatcher("/game/makeelement.jsp");
+		rd.forward(request, response);
 	}
 
 }

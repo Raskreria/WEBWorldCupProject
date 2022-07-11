@@ -1,0 +1,26 @@
+#gameTitleWrapper,#gameDescriptionWrapper, #gameImgFileWrapper{
+    margin-bottom: 10px;
+}
+
+#gameDescription > textarea {
+    resize: none;
+    height: 100px;
+}
+
+.input-group-text {
+    width: 150px;
+    font-size: 16px !important;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.form-control, .form-select, .product_file_path {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+}
+
+input[type=file].form-control {
+    padding: 0px 0px 0px 12px;
+    font-size: 1.25rem;
+}

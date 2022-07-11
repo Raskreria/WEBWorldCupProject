@@ -15,20 +15,19 @@ import vo.ElementInfo;
 import vo.GameInfo;
 
 public class CommentInfoDao {
-	public List<CommentInfo> selectCommentsByGameIdx(int gameIdx, int loadNumber) {
+	public List<CommentInfo> selectCommentInfoList(String category,int categoryIdx, int loadNumber) {
 		Database db = new Database();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		List<CommentInfo> commentInfoList = new ArrayList<>();
 		
-		String sql = "SELECT * 	FROM commentinfo WHERE gameidx=? ORDER BY commentDate ASC LIMIT ?, 10";
-		
+		String sql = "SELECT * 	FROM commentinfo WHERE category=? AND categoryIdx=? ORDER BY commentDate ASC LIMIT ?, 10";
 		try {
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, gameIdx);
-			pstmt.setInt(2, (loadNumber - 1) * 10);
-			
+			pstmt.setString(1, category);
+			pstmt.setInt(2, categoryIdx);
+			pstmt.setInt(3, (loadNumber - 1) * 10);
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -62,13 +61,15 @@ public class CommentInfoDao {
 
 		try {
 
-			String sql = "INSERT INTO commentInfo(gameIdx,name,comment,commentDate,memberIdx) VALUES(?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO commentInfo(category, categoryIdx, memberIdx, name, comment, commentDate) VALUES(?, ?, ?, ?, ?,?)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, commentInfo.getGameIdx());
-			pstmt.setString(2, commentInfo.getName());
-			pstmt.setString(3, commentInfo.getComment());
-			pstmt.setString(4, commentInfo.getCommentDate().toString());
+			pstmt.setString(1, commentInfo.getCategory());
+			pstmt.setInt(2, commentInfo.getCategoryIdx());
+			pstmt.setInt(3, commentInfo.getMemberIdx());
+			pstmt.setString(4, commentInfo.getName());
+			
+			pstmt.setString(6, commentInfo.getCommentDate().toString());
 			if (commentInfo.getMemberIdx() == 0) {
 				pstmt.setString(5, null);
 			} else {

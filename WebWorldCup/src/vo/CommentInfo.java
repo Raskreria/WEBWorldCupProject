@@ -3,39 +3,46 @@ package vo;
 import java.time.LocalDateTime;
 
 public class CommentInfo {
-	private int gameIdx;
+	private String category;
+	private int categoryIdx;
+	private int memberIdx;
 	private String name;
 	private String comment;
 	private LocalDateTime commentDate;
-	private int memberIdx;
+	
 	
 	public CommentInfo(String name, String comment, LocalDateTime commentDate) {
+		super();
 		this.name = name;
 		this.comment = comment;
 		this.commentDate = commentDate;
 	}
-
-
-	public CommentInfo(int gameIdx, String name, String comment, LocalDateTime commentDate, int memberIdx) {
-		this.gameIdx = gameIdx;
-		this.name = name;
-		this.comment = comment;
-		this.commentDate = commentDate;
+	public CommentInfo(String category, int categoryIdx, int memberIdx, String name, String comment,
+			LocalDateTime commentDate) {
+		this.category = category;
+		this.categoryIdx = categoryIdx;
 		this.memberIdx = memberIdx;
+		this.name = name;
+		this.comment = comment;
+		this.commentDate = commentDate;
 	}
-
-
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public int getCategoryIdx() {
+		return categoryIdx;
+	}
+	public void setCategoryIdx(int categoryIdx) {
+		this.categoryIdx = categoryIdx;
+	}
 	public int getMemberIdx() {
 		return memberIdx;
 	}
 	public void setMemberIdx(int memberIdx) {
 		this.memberIdx = memberIdx;
-	}
-	public int getGameIdx() {
-		return gameIdx;
-	}
-	public void setGameIdx(int gameIdx) {
-		this.gameIdx = gameIdx;
 	}
 	public String getName() {
 		return name;
@@ -56,5 +63,7 @@ public class CommentInfo {
 		this.commentDate = commentDate;
 	}
 	
+	
+		
 	
 }

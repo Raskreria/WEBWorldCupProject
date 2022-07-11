@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.imgBox{width: 180px; height: 180px; overflow: hidden; margin:auto}
+#thumbnailbtn-group{
+	margin:auto;
+}
+#elementListWrapper,body,html{
+	height:100%;
+}
+#elementAddFormWrapper{
+	position:fixed;
+    bottom: 0px;
+    margin:auto;
+    left:35%;
+    z-index:1;
+}
+#elementAddForm > div{
+	text-align:center;
+}
+
+#thumbnailPreview{
+	position:fixed;
+    top: 100px;
+    left: 10px;
+    width: 230px;
+}
