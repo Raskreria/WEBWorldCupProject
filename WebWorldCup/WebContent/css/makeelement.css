@@ -3,6 +3,9 @@
 #thumbnailbtn-group{
 	margin:auto;
 }
+div[id $="thElementbtn-group"]{
+	margin:auto;
+}
 #elementListWrapper,body,html{
 	height:100%;
 }
@@ -16,10 +19,20 @@
 #elementAddForm > div{
 	text-align:center;
 }
-
 #thumbnailPreview{
 	position:fixed;
     top: 100px;
     left: 10px;
     width: 230px;
+}
+
+#statusPreviewSideBar{
+	position:fixed;
+    top: 100px;
+    right: 10px;
+    width: 230px;
+}
+#statusPreviewSideBar > div{
+	text-align:center;
+	margin:auto;
 }

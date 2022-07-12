@@ -111,6 +111,36 @@ public class ElementInfoDao {
 			db.closeConnection(conn);
 		}
 	}
+
+	public boolean updateElementInfo(ElementInfo elementInfo) {
+		Database db = new Database();
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		boolean result = false;
+		String sql = "UPDATE elementInfo SET elementTitle = ?, elementImg = ? WHERE elementIdx = ? AND gameIdx = ?";
+
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, elementInfo.getElementTitle());
+			pstmt.setString(2, elementInfo.getElementImg());
+			pstmt.setInt(3, elementInfo.getElementIdx());
+			pstmt.setInt(4, elementInfo.getGameIdx());
+			int count = pstmt.executeUpdate();
+
+			result = count == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+
+		return result;
+	}
+	
 	//요소등록 후에 요소 idx를 jsp에 전달해주기 위한 메서드
 	public ElementInfo selectThisElementInfo(ElementInfo elementInfo) {
 			Database db = new Database();
@@ -201,5 +231,62 @@ public class ElementInfoDao {
 		}
 
 		return amount;
+	}
+	
+	
+	public ElementInfo selectElementInfoByElementIdx(int elementIdx) {
+		Database db = new Database();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ElementInfo elementInfo = null;
+		String sql = "SELECT * from ElementInfo WHERE elementIdx =" + elementIdx;
+		
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+
+			rs.next(); 
+			String elementTitle = rs.getString("elementTitle");
+			String elementImg = rs.getString("elementImg");
+
+			elementInfo = new ElementInfo(elementIdx, elementTitle, elementImg);
+
+			
+			return elementInfo;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return elementInfo;
+	}
+	
+	public boolean deleteElementInfoByElementIdx(int elementIdx) {
+		Database db = new Database();
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		boolean result = false;
+
+		try {
+			String sql = "DELETE FROM ElementInfo WHERE elementIdx = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, elementIdx);
+
+			int count = pstmt.executeUpdate();
+
+			result = count == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+
+		return result;
 	}
 }

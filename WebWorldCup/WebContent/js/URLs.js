@@ -26,3 +26,7 @@ let ELEMENT_RANKING_PAGE = "/worldcup/game/ranking.jsp"
 let COMMENT_LIST_SERVLET = "/worldcup/comment/list";
 
 let GAME_ELEMENT_ADD_SERVLET ="/worldcup/game/addelement";
+
+let GAME_ELEMENT_DELETE_SERVLET ="/worldcup/game/deleteelement";
+
+let GAME_ELEMENT_UPDATE_SERVLET ="/worldcup/game/updateelement";
