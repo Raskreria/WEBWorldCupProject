@@ -31,7 +31,6 @@ public class DeleteController extends HttpServlet {
 		session.invalidate();
 		
 		response.setStatus(HttpServletResponse.SC_OK);
-	
 	}
 
 }

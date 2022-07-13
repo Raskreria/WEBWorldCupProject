@@ -239,7 +239,7 @@
 	});
 	$("#gameEnrollbtn").on("click",function(){
 		alert("게임등록이 완료되었습니다!");
-		location.href = MAIN_PAGE;
+		location.href = MAIN_PAGE+"?sortingMethod=last";
 	});
 </script>
 </body>

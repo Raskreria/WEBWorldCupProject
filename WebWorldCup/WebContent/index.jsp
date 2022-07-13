@@ -37,8 +37,8 @@
 	<%@ include file="/includes/header.jsp"%>
 
 	<!-- NAV -->
-	<nav class="bg-light">
-		<div class="container border border-dark border-3 mt-3 p-2 bg-white">
+	<nav class="bg-light pt-3">
+		<div class="container border border-dark border-3 p-2 bg-white">
 			<div class="row">
 				<div class="data_area col-1 pl-2">
 					
@@ -159,9 +159,13 @@
 									
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="btn-group">
-											<button type="button" class="btn btn-sm btn-outline-secondary">게임시작</button>
+											<a href="/worldcup/game/play.jsp?gameIdx=${nthGameInfo.gameIdx}&gameTitle=${nthGameInfo.gameTitle}">
+												<button type="button" class="btn btn-sm btn-outline-secondary">게임시작</button>
+											</a>
+											<a href="/worldcup/game/ranking.jsp?gameIdx=${nthGameInfo.gameIdx}">
+												<button type="button" class="btn btn-sm btn-outline-secondary">랭킹보기</button>
+											</a>		
 											<button type="button" class="btn btn-sm btn-outline-secondary">공유</button>
-											<button type="button" class="btn btn-sm btn-outline-secondary">랭킹보기</button>
 										</div>
 									</div>
 								</div>
@@ -221,9 +225,13 @@
 																			+"<p class=\"card-text\">"+gameInfoList[i].gameTitle+"</p>"
 																			+"<div class=\"d-flex justify-content-between align-items-center\">"
 																				+"<div class=\"btn-group\">"
-																					+"<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">게임시작</button>"
-																					+"<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">공유</button>"
+																					+"<a href=\"/worldcup/game/play.jsp?gameIdx="+gameInfoList[i].gameIdx+"&gameTitle="+gameInfoList[i].gameTitle+"\">"
+																						+"<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">게임시작</button>"
+																					+"</a>"
+																					+"<a href=\"/worldcup/game/ranking.jsp?gameIdx="+gameInfoList[i].gameIdx+"\">"
 																					+"<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">랭킹보기</button>"
+																					+"</a>"
+																					+"<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">공유</button>"
 																				+"</div>"
 																			+"</div>"
 																		+"</div>"

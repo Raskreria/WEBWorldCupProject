@@ -94,8 +94,10 @@
 
 			
 
-			<button id="submit_btn" class="w-100 btn btn-lg btn-secondary"
-				type="submit">회원정보 수정</button>
+			<button id="updatebtn" class="w-100 btn btn-lg btn-secondary"
+				type="button">회원정보 수정</button>
+			<button id="deletebtn" class="w-100 btn btn-lg btn-danger"
+				type="button">회원 탈퇴</button>
 		</form>
 	</main>
 	<!-- 		제이쿼리 -->
@@ -130,8 +132,8 @@
 		        }).open();
 		});
 		
-// 			회원가입 버튼 클릭시
-		$("#submit_btn").on("click",
+// 		회원정보 수정 클릭시
+		$("#updatebtn").on("click",
 				function(event) {
 					event.preventDefault();
 					// 	 alert("회원가입버튼의 기본 클릭이벤트가 무시되었음.")
@@ -195,6 +197,22 @@
 						}
 					});
 				});
+		$("#deletebtn").on("click",
+				function(event) {
+			$.ajax({
+				url : "/worldcup/member/delete",
+				type : "POST",
+				success : function() {
+					//회원탈퇴에 성공했을 경우
+					alert("회원 탈퇴되었습니다! 메인 페이지로 이동합니다.");
+					location.href = MAIN_PAGE;
+				},
+				error : function(response) {
+					console.log(response);
+
+				}
+			});
+		});
 	</script>
 </body>
 </html>

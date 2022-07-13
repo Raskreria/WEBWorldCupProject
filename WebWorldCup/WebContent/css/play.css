@@ -1,13 +1,31 @@
 @charset "UTF-8";
-
-#sufflebtn{
-	position:fixed;
-	width: 100px;
-    height: 80px;
-    font-size: 26px;
-    bottom:0;
+html,body,#contentBox{
+	height:100%;
 }
+
 .shuffleWrapper{
-	width:300px;
+	position: fixed;
+    bottom: 15px;
+    text-align: center;
+    margin: auto;
+    right: 42%;
+	
+}
+.shuffleWrapper > button{
+	width:120px;
+	height:80px;
+	font-size:21px;
+	font-weight:bold;
+}
+#leftElementImg, #rightElementImg{
+	height: 500px;
+	overflow: hidden;
 	margin:auto;
+}
+#titlebox{
+	text-align:center;
+}
+#leftElementTitle, #rightElementTitle{
+	text-align: center;
+    font-weight: bold;
 }

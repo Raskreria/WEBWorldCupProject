@@ -21,15 +21,3 @@ function getParameter(name){
 	}
 	return value;
 }
-function changeCategoryKtoE(category){
-	
-	if(category == "스마트폰"){
-		category = "smartphone";
-	}else if(category == "노트북"){
-		category = "notebook";
-	}else if(category == "태블릿"){
-		category = "tablet";
-	}
-	
-	return category;
-}

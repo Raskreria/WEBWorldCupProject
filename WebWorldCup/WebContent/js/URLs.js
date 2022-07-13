@@ -13,7 +13,7 @@ let BOARD_LIKE_SERVLET = "/worldcup/board/likes";
 let JOIN_SERVLET = "/worldcup/member/join";
 
 let MEMBERINFO_UPDATE_SERVLET = "/worldcup/member/update";
-
+let MEMBERINFO_DELETE_SERVLET = "/worldcup/member/delete";
 let Board_LIST_SERVLET = "/worldcup/board/list";
 
 let ELEMENT_RANKING_SERVLET = "/worldcup/game/ranking";

@@ -18,6 +18,8 @@ public class ResultReflectController extends HttpServlet {
 		//1. 파라미터 받기
 		int gameIdx = Integer.parseInt(request.getParameter("gameIdx"));
 		String[] resultArrayString = request.getParameterValues("elementIdx");
+		System.out.println("결과 배열 길이 =" + resultArrayString.length);
+		System.out.println("결과 배열 받은 거 처음 요소 = "+resultArrayString[0]);
 		int[] resultArray = new int[resultArrayString.length];
 		
 		int count=0;
