@@ -16,13 +16,12 @@ public class CommentListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String category = request.getParameter("category");
-		int categoryIdx = Integer.parseInt(request.getParameter(category+"Idx"));
 		int loadNumber = Integer.parseInt(request.getParameter("loadNumber"));
 		
 		
 		CommentService service = new CommentService();
 		
-		String data = service.loadCommentInfoToJson(category, categoryIdx, loadNumber);
+		String data = service.loadCommentInfoToJson(category, loadNumber);
 		
 		System.out.println(data);
 		response.setContentType("text/plain;charset=UTF-8");

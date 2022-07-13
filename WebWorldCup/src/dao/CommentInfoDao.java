@@ -15,19 +15,18 @@ import vo.ElementInfo;
 import vo.GameInfo;
 
 public class CommentInfoDao {
-	public List<CommentInfo> selectCommentInfoList(String category,int categoryIdx, int loadNumber) {
+	public List<CommentInfo> selectCommentInfoList(String category, int loadNumber) {
 		Database db = new Database();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		List<CommentInfo> commentInfoList = new ArrayList<>();
 		
-		String sql = "SELECT * 	FROM commentinfo WHERE category=? AND categoryIdx=? ORDER BY commentDate ASC LIMIT ?, 10";
+		String sql = "SELECT * 	FROM commentinfo WHERE category=? ORDER BY commentDate ASC LIMIT ?, 10";
 		try {
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, category);
-			pstmt.setInt(2, categoryIdx);
-			pstmt.setInt(3, (loadNumber - 1) * 10);
+			pstmt.setInt(2, (loadNumber - 1) * 10);
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {

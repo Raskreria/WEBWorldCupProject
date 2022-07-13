@@ -34,10 +34,10 @@ public class CommentService {
 	}
 	
 	//게임 검색에 의한 GameList json 구성
-	public String loadCommentInfoToJson(String category, int categoryIdx, int loadNumber) {
+	public String loadCommentInfoToJson(String category, int loadNumber) {
 
 		CommentInfoDao dao = new CommentInfoDao();
-		List<CommentInfo> commentInfoList = dao.selectCommentInfoList(category, categoryIdx, loadNumber);
+		List<CommentInfo> commentInfoList = dao.selectCommentInfoList(category, loadNumber);
 		
 		return CommentInfoToJson(commentInfoList);
 	}

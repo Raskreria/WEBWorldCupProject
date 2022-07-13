@@ -29,40 +29,48 @@
 
 </head>
 <body>
-	<div id="titlebox">
-		<h1>${param.gameTitle} 게임 <span id="gameLevel">16</span>강 <span id="progress">(1/8)</span></h1>
-	</div>
-	
-	<div id="contentBox">
-<!-- 	 	왼쪽 요소 -->
-		<span id="leftElementWrapper" class="card shadow-sm col-6" style="float: left;">
-			<button type="button" id="leftElement">
-				<img id="leftElementImg" alt="" src="https://via.placeholder.com/300x180.jpg/">
-			</button>
+<div class="pageWrapper">
+	<span id="gameWrapper">
+		<div id="titlebox">
+			<h1>${param.gameTitle}
+				게임 <span id="gameLevel">16</span>강 <span id="progress">(1/8)</span>
+			</h1>
+		</div>
 
-			<div class="card-body">
-				<h3 id="leftElementTitle" class="card-text">요소 타이틀 올자리</h3>
-			</div>
-		</span>
-		<!-- 		오른쪽  요소 -->
-		<span id="rightElementWrapper" class="card shadow-sm col-6">
-			<button type="button" id="rightElement">
-				<img id="rightElementImg" alt="" src="https://via.placeholder.com/300x180.jpg/">
-			</button>
+		<div id="contentBox">
+			<!-- 	 	왼쪽 요소 -->
+			<span id="leftElementWrapper" class="card shadow-sm col-6"
+				style="float: left;">
+				<button type="button" id="leftElement">
+					<img id="leftElementImg" alt=""
+						src="https://via.placeholder.com/300x180.jpg/">
+				</button>
 
-			<div class="card-body">
-				<h3 id="rightElementTitle" class="card-text">요소 타이틀 올자리</h3>
-			</div>
-		</span>
+				<div class="card-body">
+					<h3 id="leftElementTitle" class="card-text">요소 타이틀 올자리</h3>
+				</div>
+			</span>
+			<!-- 		오른쪽  요소 -->
+			<span id="rightElementWrapper" class="card shadow-sm col-6">
+				<button type="button" id="rightElement">
+					<img id="rightElementImg" alt=""
+						src="https://via.placeholder.com/300x180.jpg/">
+				</button>
 
-	</div>
-	<div class="shuffleWrapper">
-		<button id="sufflebtn" type="button" class="btn btn-danger">셔플</button>
-		<button id="restartbtn" type="button" class="btn btn-success">다시 시작</button>
-	</div>
+				<div class="card-body">
+					<h3 id="rightElementTitle" class="card-text">요소 타이틀 올자리</h3>
+				</div>
+			</span>
 
-	
-	
+		</div>
+		<div class="shuffleWrapper">
+			<button id="sufflebtn" type="button" class="btn btn-danger">셔플</button>
+			<button id="restartbtn" type="button" class="btn btn-success">다시
+				시작</button>
+		</div>
+
+	</span>
+</div>
 	<!-- 제이쿼리 -->
 	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
 	
@@ -105,7 +113,7 @@
  		[elementInfoList[elementPointer*level-1], elementInfoList[(elementPointer-1)*level-1]] = [elementInfoList[(elementPointer-1)*level-1], elementInfoList[elementPointer*level-1]];
  		
  		
- 		$("#rightElementWrapper").css("display","none");
+ 		$("#rightElementWrapper").css("visibility","hidden");
  		$("#leftElementWrapper").animate({marginLeft:"+=25%"},900);
  		$("#leftElementWrapper").css("float","");
  		$("#leftElementWrapper").css("margin","auto");
@@ -124,6 +132,10 @@
 		gameCounter++;
 		if (gameCounter == gameLevel / 2) {
 			gameLevel /= 2;
+			if (gameLevel == 2){
+				$("#titlebox").empty();
+				$("#titlebox").append("<h1>결승전</h1>");
+			}
 			if (gameLevel == 1){
 				alert("게임 끝");
 				$("#titlebox").empty();
@@ -132,7 +144,9 @@
 					+"최종우승"
 					+"<img src=\"../images/win_right.png\" width=\"70px\">"
 					+"</h1>");
+				
 				resultReflect();
+				setTimeout(afterGame, 2000);
 				return;
 			}
 			$("#gameLevel").text(gameLevel);
@@ -152,9 +166,27 @@
 		$("#leftElementWrapper").css("visibility","");
  		$("#leftElementWrapper").css("margin","");
 		$("#leftElementWrapper").css("float","left");
- 		$("#rightElementWrapper").css("display","");
+ 		$("#rightElementWrapper").css("visibility","");
  		$("#rightElementWrapper").css("margin","");
 	};
+	
+	function afterGame(){
+		$("#contentBox").empty();
+		$("#contentBox").append("<span id=\"winElementWrapper\" class=\"card shadow-sm col-6\""
+				+"style=\"float: left;\">"
+				+"<button type=\"button\" id=\"winElement\">"
+					+"<img id=\"winElementImg\""
+						+"src=\"../"+elementInfoList[gameSet-1].elementImg+"\""
+						+"height: 500px; overflow: hidden; margin:auto;\">"
+					+"</button>"
+					+"<div class=\"card-body\">"
+					+"<h3 id=\"winElementTitle\" class=\"card-text\" "
+					+"style=\"text-align: center; font-weight: bold;\">"
+					+elementInfoList[gameSet-1].elementTitle+"</h3>"
+				+"</div>"
+			+"</span>");
+	}
+	
 	
 	function resultReflect(){
 		var reflectList;

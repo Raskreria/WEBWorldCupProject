@@ -17,7 +17,7 @@ html,body,#contentBox{
 	font-size:21px;
 	font-weight:bold;
 }
-#leftElementImg, #rightElementImg{
+#leftElementImg, #rightElementImg, #winElementImg{
 	height: 500px;
 	overflow: hidden;
 	margin:auto;
@@ -25,7 +25,7 @@ html,body,#contentBox{
 #titlebox{
 	text-align:center;
 }
-#leftElementTitle, #rightElementTitle{
+#leftElementTitle, #rightElementTitle, #winElementTitle{
 	text-align: center;
     font-weight: bold;
 }
