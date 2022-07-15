@@ -29,7 +29,7 @@
 	<nav>
 		<div class="container col-xxl-8 px-4 pt-5">
          
-		<h1>썸네일 등록 -> 요소들 등록 순으로 진행됩니다.</h1>
+			<h1 id="titleText">썸네일 등록</h1>
 		</div> 
 	</nav>
 	<section class="py-5">

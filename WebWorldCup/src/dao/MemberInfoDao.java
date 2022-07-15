@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.Database;
+import vo.BoardInfo;
 import vo.MemberInfo;
 
 public class MemberInfoDao {
@@ -59,6 +62,8 @@ public class MemberInfoDao {
 		}
 		return memberInfo;
 	}
+	
+
 	
 	public boolean insert(MemberInfo newMemberInfo) {
 		Database db = new Database();

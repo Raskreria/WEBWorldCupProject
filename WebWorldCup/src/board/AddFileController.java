@@ -32,7 +32,7 @@ public class AddFileController extends HttpServlet {
 		if(fileSystemName != null) {
 			filePath = "/file/board/" + fileSystemName;
 		}
-		
+		System.out.println("수정 파일 path =" + filePath);
 		//3. 파일경로 db저장
 		BoardInfoDao dao = new BoardInfoDao();
 		dao.addFileByBoardIdx(category, boardIdx, filePath);

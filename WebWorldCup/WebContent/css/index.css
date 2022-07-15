@@ -5,3 +5,24 @@
 	overflow: hidden;
 	margin: auto
 }
+.carouselImgBox{
+	max-width: 400px;
+    max-height: 250px;
+    overflow: hidden;
+    margin: auto
+}
+h5[id^="carouselTitle"]{  
+ 	background: white;
+    font-weight: 800;
+    width: 200px;
+    margin:auto;
+}
+div[id^="carouselTitleWrapper"]{
+	padding:0px;
+}
+.atAGlance, #curDate, .card-body > p{
+	font-weight: 800;
+}
+.card-body > p {
+	text-align:center;
+}

@@ -9,13 +9,18 @@
 			<c:if test="${category eq 'community'}">
 			커뮤니티
 			</c:if>
-			<c:if test="${(category eq null) && (param.category eq 'notice')}">
+			<c:if test="${(param.category eq 'notice') && (param.menu eq 'write')}">
 			공지사항 작성
 			</c:if>
-			<c:if test="${(param.category ne null) && (param.category ne 'notice') && (category eq null)}">
+			<c:if test="${(param.category eq 'community') && (param.menu eq 'write')}">
 			커뮤니티 작성
 			</c:if>
-			
+			<c:if test="${(param.category eq 'notice') && (param.menu eq 'update')}">
+			 수정
+			</c:if>
+			<c:if test="${(param.category eq 'community') && (param.menu eq 'update')}">
+			 수정
+			</c:if>
 		</h2>
 		<hr>
 		<ul>

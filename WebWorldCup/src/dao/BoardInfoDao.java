@@ -57,6 +57,7 @@ public class BoardInfoDao {
 		return boardList;
 
 	}
+	
 
 	public int count(String category) {
 		Database db = new Database();

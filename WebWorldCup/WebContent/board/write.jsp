@@ -44,8 +44,8 @@
 			<div class="container col-8" id="boardRead">
 				<div id="boardTopbtn">
 					
-					<button class="boardWritebtn" type="submit" >작성</button>
-					<button class="prevPage" type="button" style="float:right;">목록으로</button>
+					<button class="btn btn-primary" id="boardWritebtn" type="submit" >작성</button>
+					<button class="btn btn-secondary" id="prevPage" type="button" style="float:right;">목록으로</button>
 					<br/>
 					<br/>
 				</div>
@@ -86,7 +86,7 @@
 				
 				<!-- 게시판 Nav -->
 				<div id="boardReadNavigation">
-					<button class="prevPage" type="button">목록으로</button>
+					<button id="prevPage" class="btn btn-secondary" type="button">목록으로</button>
 				</div>
 			</div>
 		</form>
@@ -102,16 +102,15 @@
 		
 		
 		//목록으로 버튼 : 이전 페이지로 이동과 동시에 새로고침
-		$(".prevPage").on("click", function() {
+		$("#prevPage").on("click", function() {
 			window.location = document.referrer;
 // 			window.history.back();
 		});
 		
 		
 		//수정 버튼
-		$(".boardUpdatebtn").on("click", function() {
-			alert("수정하기");
-			location.href="/worldcup/board/update.jsp";
+		$("#boardWritebtn").on("click", function() {
+		
 		});
 		
 		

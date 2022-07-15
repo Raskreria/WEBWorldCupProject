@@ -17,3 +17,9 @@ tbody>tr>td>a:hover{
     color: black;
     text-decoration: underline;
 }
+th,td{
+	text-align:center;
+}
+.boardTitle{
+	text-align:left;
+}

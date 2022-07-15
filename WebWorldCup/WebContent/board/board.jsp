@@ -67,7 +67,7 @@
 
 					<tr>
 						<th scope="row">${nthBoardInfo.boardIdx}</th>
-						<td><a href="${BOARD_DETAIL_SERVLET}?category=${category}&${category}Idx=${nthBoardInfo.boardIdx}">${nthBoardInfo.boardTitle}</a></td>
+						<td class="boardTitle"><a href="${BOARD_DETAIL_SERVLET}?category=${category}&${category}Idx=${nthBoardInfo.boardIdx}">${nthBoardInfo.boardTitle}</a></td>
 						<td>${nthBoardInfo.memberIdx}</td>
 
 						<td>${nthBoardInfo.pubDate}</td>
@@ -97,7 +97,7 @@
 		<div id="boardBottombtn">
 				<c:if test="${(loginUserInfo ne null)}">
 					<c:if test="${(category ne 'notice') || (loginUserInfo.id eq 'admin')}">	
-						<button class="boardWritebtn" type="button" style="float:right;">글쓰기</button>
+						<button class="boardWritebtn btn btn-info mb-3" type="button" style="float:right;font-weight:700">글쓰기</button>
 					</c:if>
 				</c:if>
 		</div>
@@ -106,6 +106,7 @@
 	<!-- 제이쿼리 -->
 	<script src="/worldcup/js/jquery-3.6.0.min.js"></script>
 	<script src="/worldcup/js/URLs.js"></script>
+	<script src="/worldcup/js/parameter_function.js"></script>
 	<script type="text/javascript">
 	
 		// 공지사항 목록의 페이지네이션을 구성할 ajax
@@ -133,17 +134,13 @@
 			}
 		});
 		$(".boardWritebtn").on("click",function(){
-			location.href="/worldcup/board/write.jsp?category=${category}";
+			location.href="/worldcup/board/write.jsp?category=${category}&menu=write";
 		});
 		
 		
-		let parameters = location.search;
-		parameters = parameters.substr(1, parameters.length);
-		parameters = parameters.split("=");
-		let category = parameters[1];
-		if(category == undefined){
-			category = "notice";
-		}
+		let category=getParameter("category");
+		if(category == undefined)
+			category="notice";
 		$("button[class^=\"boardDeletebtn\"]").on("click",function(){
  			$.ajax({
  				url : "/worldcup/board/delete?category="+category+"&"+category+"Idx="+$(this).val(),

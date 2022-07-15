@@ -207,7 +207,7 @@
         var blobURL = window.URL.createObjectURL(NewImgFile);
         
         $.ajax({
-			url : "/worldcup/game/updateelement"+"?gameIdx="+gameIdx+"&elementidx="+elementIdx+"elementTitle="+NewElementTitle,
+			url : "/worldcup/game/updateelement"+"?gameIdx="+gameIdx+"&elementIdx="+elementIdx+"&elementTitle="+newElementTitle,
 			type: "POST",
 			 processData : false,
 	         contentType : false,
@@ -241,6 +241,24 @@
 		alert("게임등록이 완료되었습니다!");
 		location.href = MAIN_PAGE+"?sortingMethod=last";
 	});
+
+	$(document).on("mouseleave",function(e) {
+				if (window.confirm("만들고 있는 게임은 저장되지 않습니다 그래도 이동하시겠습니까?")) {
+					$(document).off("mouseleave");
+
+// 					$.ajax({
+// 						url : "/worldcup/game/deletegame" + "?gameIdx="+ gameIdx,
+// 						type : "POST",
+// 						success : function() {
+// 							alert("등록 중인 게임 데이터 삭제");
+// 						},
+// 						error : function() {
+// 							alert("삭제 실패");
+// 						}
+// 					});
+// 					$("div").not("header div").empty();
+				}
+			});
 </script>
 </body>
 </html>

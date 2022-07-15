@@ -24,3 +24,8 @@ input[type=file].form-control {
     padding: 0px 0px 0px 12px;
     font-size: 1.25rem;
 }
+#titleText{
+    text-align: center;
+    color: green;
+    font-weight: revert;
+}

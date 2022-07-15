@@ -103,7 +103,7 @@
 								id="term2"> <label class="form-check-label" for="term2">
 								이용 약관 동의 </label>
 						</div>
-						<div class="terms">실컷 이용해 먹겠습니다</div>
+						<div class="terms">모든 정보는 본 사이트의 원활한 이용을 위해서만 이용됩니다.</div>
 					</li>
 					<li class="list-group-item">
 						<div class="form-check">
@@ -111,7 +111,7 @@
 								id="term3"> <label class="form-check-label" for="term3">
 								개인정보 수집 및 이용 동의 </label>
 						</div>
-						<div class="terms">개인정보는 이제 제껍니다.</div>
+						<div class="terms">개인 정보는 본 사이트의 원활한 이용을 위해서만 활용됩니다. 개인정보 활용에 동의합니다.</div>
 					</li>
 				</ul>
 			</div>

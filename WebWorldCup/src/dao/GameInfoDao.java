@@ -82,7 +82,7 @@ public class GameInfoDao {
 			sql="SELECT COUNT(0)AS amount, a.gameIdx, a.gameTitle, a.gameImg "
 			+ "FROM gameInfo AS a LEFT OUTER JOIN recordInfo AS b ON a.gameIdx = b.gameIdx "
 			+ "group BY a.gameIdx "
-			+ "ORDER BY amount ASC LIMIT ?, 10";
+			+ "ORDER BY amount DESC LIMIT ?, 10";
 		}else {
 			sql="SELECT * "
 					+ "FROM gameInfo "
@@ -149,5 +149,32 @@ public class GameInfoDao {
 			db.closeConnection(conn);
 		}
 		return gameInfoList;
+	}
+	
+	public boolean deleteGameInfoByGameIdx(int gameIdx) {
+		Database db = new Database();
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		boolean result = false;
+
+		try {
+			String sql = "DELETE FROM gameInfo WHERE gameIdx = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gameIdx);
+
+			int count = pstmt.executeUpdate();
+
+			result = count == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+
+		return result;
 	}
 }

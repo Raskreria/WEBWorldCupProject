@@ -44,10 +44,10 @@
 		<div class="container col-8" id="boardRead">
 			<div id="boardTopbtn">
 				<c:if test="${(boardInfo.memberIdx eq loginUserInfo.idx) || (loginUserInfo.id eq 'admin')}">
-					<button class="boardUpdatebtn" type="button" >수정</button>
-					<button class="boardDeletebtn" type="button" >삭제</button>
+					<button id="boardUpdatebtn" class="btn btn-primary" type="button" >수정</button>
+					<button id="boardDeletebtn" class="btn btn-danger" type="button" >삭제</button>
 				</c:if>
-				<button class="prevPage" type="button" style="float:right;">목록으로</button>
+				<button class="btn btn-secondary" id="prevPage" type="button" style="float:right;">목록으로</button>
 				<br/>
 				<br/>
 			</div>
@@ -121,8 +121,7 @@
 			
 			<!-- 게시판 Nav -->
 			<div id="boardReadNavigation">
-			<button class="prevPage" type="button">목록으로</button>
-				<p>페이지네이션자리입니다</p>
+			<button class="btn btn-secondary" id="prevPage" type="button">목록으로</button>
 			</div>
 		</div>
 	
@@ -163,21 +162,22 @@
 		
 		
 		//목록으로 버튼 : 이전 페이지로 이동과 동시에 새로고침
-		$(".prevPage").on("click", function() {
+		$("#prevPage").on("click", function() {
 			window.location = document.referrer;
 // 			window.history.back();
 		});
 		
 		
 		//수정 버튼
-		$(".boardUpdatebtn").on("click", function() {
+		$("#boardUpdatebtn").on("click", function() {
 			alert("수정하기");
-			location.href="/worldcup/board/update.jsp";
+			
+			location.href="/worldcup/board/detail?category=${category}&${category}Idx=${boardInfo.boardIdx}&menu=update";
 		});
 		
 		
 		//삭제 버튼
-		$(".boardDeletebtn").on("click", function() {
+		$("#boardDeletebtn").on("click", function() {
 			$.ajax({
 				url : "/worldcup/board/delete",
 				type : "POST",

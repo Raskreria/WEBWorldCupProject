@@ -21,6 +21,10 @@ public class BoardDetailController extends HttpServlet {
 		//상세보기 페이지를 위한 데이터 세션에 저장
 		String category = request.getParameter("category");
 		int boardIdx = Integer.parseInt(request.getParameter(category+"Idx"));
+		String menu = "";
+		if(request.getParameter("menu")!=null) {
+			menu = request.getParameter("menu");
+		}
 		
 		BoardInfoDao dao = new BoardInfoDao();
 		BoardInfo boardInfo = dao.selectBoardByBoardIdx(category,boardIdx);
@@ -30,10 +34,13 @@ public class BoardDetailController extends HttpServlet {
 		//조회수 1 올리기
 		dao.increaseViewsByBoardIdx(category, boardIdx);
 		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/board/detail.jsp");
-		rd.forward(request, response);
-		
+		if(menu.equals("update")) {
+			RequestDispatcher rd = request.getRequestDispatcher("/board/update.jsp");
+			rd.forward(request, response);
+		}else {
+			RequestDispatcher rd = request.getRequestDispatcher("/board/detail.jsp");
+			rd.forward(request, response);
+		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}

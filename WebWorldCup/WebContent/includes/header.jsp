@@ -33,12 +33,22 @@
 							<b>게시판</b>
 						</button>
 				</a></li>
-				<li><a href="${GAME_MAKE_PAGE}">
-						<button type="button" class="btn btn-outline-light"
-							style="border: 0px">
-							<b>게임 만들기</b>
-						</button>
-				</a></li>
+				<li>
+					<c:if test="${loginUserInfo ne null}">
+						<a href="${GAME_MAKE_PAGE}">
+							<button type="button" class="btn btn-outline-light"
+								style="border: 0px">
+								<b>게임 만들기</b>
+							</button>
+						</a>
+					</c:if>
+					<c:if test="${loginUserInfo eq null}">
+						<button id="nonLoginUserGameMakebtn" type="button" class="btn btn-outline-light"
+								style="border: 0px">
+								<b>게임 만들기</b>
+							</button>
+					</c:if>
+				</li>	
 			</ul>
 
 			<!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -67,11 +77,11 @@
 						<li><a class="dropdown-item" href="#">지난게임 기록</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><a id="logout" class="dropdown-item">로그아웃</a></li>
-						<%--로그인한 사용자가 관리자라면 --%>
-						<c:if test="${loginUserInfo.id eq 'admin'}">
-							<li><a class="dropdown-item"
-								href="">관리</a></li>
-						</c:if>
+<%-- 						로그인한 사용자가 관리자라면 --%>
+<%-- 						<c:if test="${loginUserInfo.id eq 'admin'}"> --%>
+<!-- 							<li><a class="dropdown-item" -->
+<!-- 								href="">관리</a></li> -->
+<%-- 						</c:if> --%>
 					
 					</ul>
 				</div>
@@ -106,6 +116,15 @@
 				location.href = "/worldcup/member/logout";
 			});
 			
+			$("#logout").on("click",function(event){ 
+				alert("로그아웃");
+				location.href = "/worldcup/member/logout";
+			});
+			$("#nonLoginUserGameMakebtn").on("click",function(event){ 
+				alert("로그인 사용자만 이용할 수 있는 기능입니다.");
+				location.href = "/worldcup/login/login.jsp";
+			});
+	
 			
 
 </script>

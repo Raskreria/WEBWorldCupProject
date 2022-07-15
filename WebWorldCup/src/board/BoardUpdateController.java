@@ -2,6 +2,7 @@ package board;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,6 @@ public class BoardUpdateController extends HttpServlet {
 		//3. 수정한다.
 		BoardInfoDao dao = new BoardInfoDao();
 		boolean result = dao.updateBoardInfo(boardInfo, category);
-		
 		//4. 수정 성공/실패에 따른 처리
 		if(result) {
 			response.setStatus(HttpServletResponse.SC_OK);

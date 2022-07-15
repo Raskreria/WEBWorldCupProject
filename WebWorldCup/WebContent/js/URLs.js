@@ -1,6 +1,7 @@
 let MAIN_PAGE = "/worldcup/main";
 let JOIN_PAGE = "/worldcup/join/join.jsp";
 let LOGIN_PAGE = "/worldcup/login/login.jsp";
+let BOARD_PAGE = "/worldcup/board/list";
 
 let MAIN_THUMBNAIL_SERVLET = "/worldcup/main/list";
 
